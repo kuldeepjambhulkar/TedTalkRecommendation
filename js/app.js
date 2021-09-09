@@ -25,13 +25,32 @@ let talkDB = {
 let topicList = Object.keys(talkDB);
 
 let catagoriesDiv = document.querySelector('.div-categories');
-console.log(catagoriesDiv);
+let resultsDiv = document.querySelector('.div-results');
+// console.log(catagoriesDiv);
 // console.log(topicList);
 // adding topic list to div-categories
 for(let i = 0; i < topicList.length; i++){
     let topic = document.createElement('span');
     topic.setAttribute('class', 'topic');
     topic.textContent = topicList[i];
-    topic.addEventListener('click',function(){});
+    topic.addEventListener('click',expandTopic);
     catagoriesDiv.appendChild(topic);
+}
+
+function expandTopic(e){
+    let selectedTopic = e.target.textContent;
+
+    let topicArray = talkDB[selectedTopic];
+    console.log(topicArray);
+
+
+    for(let i = 0; i < topicArray.length; i++){
+        let li = document.createElement('li');
+        let a = document.createElement('a');
+        a.setAttribute('href', topicArray[i].link);
+        a.innerHTML = topicArray[i].name;
+
+        li.appendChild(a);
+        resultsDiv.appendChild(li);
+    }
 }
