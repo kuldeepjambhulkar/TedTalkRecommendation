@@ -25,3 +25,8 @@ a{
     text-decoration: none;
     color: black;
 }
+
+.container-center{
+    max-width: 500px;
+    margin: auto;
+}
