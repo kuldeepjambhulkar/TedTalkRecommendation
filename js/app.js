@@ -38,6 +38,7 @@ for(let i = 0; i < topicList.length; i++){
 }
 
 function expandTopic(e){
+    resultsDiv.innerHTML = '';
     let selectedTopic = e.target.textContent;
 
     let topicArray = talkDB[selectedTopic];
@@ -48,6 +49,7 @@ function expandTopic(e){
         let li = document.createElement('li');
         let a = document.createElement('a');
         a.setAttribute('href', topicArray[i].link);
+        a.setAttribute('target', '_blank');
         a.innerHTML = topicArray[i].name;
 
         li.appendChild(a);
