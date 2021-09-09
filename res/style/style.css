@@ -1,0 +1,7 @@
+.topic{
+    border: 2px solid black;
+    padding: .8rem;
+    margin: .5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
