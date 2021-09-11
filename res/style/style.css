@@ -1,6 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Serious design */
+.container-center{
+    max-width: 500px;
+    margin: auto;
+}
 .div-categories{
     padding: 2rem 0;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     /* border: 2px solid black; */
 }
 .div-results{
@@ -8,25 +18,86 @@
     /* border: 2px solid black; */
 }
 .topic{
-    border: 2px solid black;
-    padding: .8rem;
-    margin: .5rem 1rem;
+    transition: .6s all;
+    border: 2px solid red;
+    padding: .5rem;
+    margin: .2rem .2rem;
     border-radius: 5px;
     cursor: pointer;
+    font-size: .9rem;
 }
-
 li{
+
     list-style-type: none;
-    border: 2px solid black;
-    padding: 1rem 0;
-    margin-bottom: .5rem;
+    margin-bottom: .7rem;
+
+    border-radius: 10px;
+    background: red;
+    color: white;
+    /* border: 2px solid red; */
+    transition: .6s all;    
+    padding: .5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: .2rem;
+    font-size: .9rem;
 }
-a{
-    text-decoration: none;
-    color: black;
+li:hover{
+    background: red;
+    color: white;
+}
+li .div-left{
+    width: 40%;
+    /* border: 2px solid red; */
+    padding: 0 0.8rem;
+}
+li .div-right{
+    position: relative;
+    left: -1rem;
+    width: 50%;
+    /* border: 2px solid green; */
+    padding: 0 1rem;
+}
+li .div-left img{
+    margin-left: -0.2rem;
+    border-radius: 10px;
+    width: 100%;
+    margin-right: .5rem;
 }
 
-.container-center{
-    max-width: 500px;
-    margin: auto;
+li p{
+    font-style: italic;
+    margin: .6rem 0;
+}
+li .length{
+    position: relative;
+    top: -10px;
+}
+li a{
+    transition: .6s all;
+    text-decoration: none;
+
+    font-weight: 700;
+    color:  white;
+}
+li:hover a{
+    color: white;
+}
+.topic:hover{
+    background: red;
+    color: white;
+}
+
+
+@media screen and (max-width: 450px) {
+    li .div-left img{
+        height: 150px;
+        object-fit: cover;
+        object-position: left;
+    
+    }
+    li{
+        font-size: .9rem;
+    }
 }

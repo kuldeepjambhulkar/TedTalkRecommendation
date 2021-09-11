@@ -1,7 +1,7 @@
 let talkDB = {
     "Behavioral economics":[
         {
-            name: "10 steps to boost your financial health — that you can do in a day", 
+            name: "10 steps to boost your financial health", 
             link:"https://www.ted.com/talks/wendy_de_la_rosa_10_steps_to_boost_your_financial_health_that_you_can_do_in_a_day",
             speaker:"Zendeya",
             length:"12:10",
@@ -58,21 +58,39 @@ function expandTopic(e){
 
     for(let i = 0; i < topicArray.length; i++){
         let li = document.createElement('li');
+        let divLeft = document.createElement('div');
+        divLeft.setAttribute('class', 'div-left');
+        let divRight = document.createElement('div');
+        divRight.setAttribute('class', 'div-right');
+
+
         let speaker = document.createElement('p');
         let length = document.createElement('p');
+        length.setAttribute('class', 'length');
+
         let thumbnail = document.createElement('img');
         thumbnail.setAttribute('src', topicArray[i].thumbnail);
+        
         let a = document.createElement('a');
         a.setAttribute('href', topicArray[i].link);
         a.setAttribute('target', '_blank');
         a.innerHTML = topicArray[i].name;
         speaker.innerHTML = topicArray[i].speaker;
-        length.innerHTML = topicArray[i].length;
+        length.innerHTML = topicArray[i].length+' min';
 
-        li.appendChild(thumbnail);
-        li.appendChild(a);
-        li.appendChild(speaker);
-        li.appendChild(length)
+        divLeft.appendChild(thumbnail);
+        divRight.appendChild(a);
+        divRight.appendChild(speaker);
+        divRight.appendChild(length);
+
+        li.appendChild(divLeft);
+        li.appendChild(divRight);
+
         resultsDiv.appendChild(li);
     }
 }
+
+
+
+
+// OnScroll Animation Code
