@@ -925,3 +925,6 @@ function expandTopic(e){
 
 
 // OnScroll Animation Code
+window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  }
