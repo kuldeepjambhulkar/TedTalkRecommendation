@@ -27,12 +27,18 @@
 
 
 
-
-
-
-
-
-
+/* body::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: red;
+    height: 20rem;
+    width: 20rem;
+    clip-path: circle(500px at 100px 60px);
+    z-index: -1;
+    
+} */
 
 
 html{
@@ -49,6 +55,7 @@ html{
     margin-bottom: 1rem;
     /* border: 2px solid black; */
     z-index: 1;
+
 }
 .div-results{
     padding: 2rem 0;
