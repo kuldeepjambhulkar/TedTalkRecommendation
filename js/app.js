@@ -1,3 +1,7 @@
+
+
+
+
 let talkDB = {
     "Technology":[
     {
@@ -834,30 +838,57 @@ let talkDB = {
 }
 
 let topicList = Object.keys(talkDB);
-
+let heading = document.querySelector('div-heading');
 let catagoriesDiv = document.querySelector('.div-categories');
 let resultsDiv = document.querySelector('.div-results');
-// console.log(catagoriesDiv);
-// console.log(topicList);
+
+// setting fixed position to div-categories onScrolling
+
+window.onscroll = function(){
+    // console.log(window.pageXOffset);
+    if(window.pageYOffset >= 220){
+        catagoriesDiv.classList.add('sticky');
+    }else{
+        catagoriesDiv.classList.remove('sticky');
+    }
+}
+
+
+
+
+
 // adding topic list to div-categories
+
 for(let i = 0; i < topicList.length; i++){
     let topic = document.createElement('span');
     topic.setAttribute('class', 'topic');
     topic.textContent = topicList[i];
-    topic.addEventListener('click',expandTopic);
+    topic.addEventListener('click', expandTopic);
+    topic.onclick = adBackgroundColor;
     catagoriesDiv.appendChild(topic);
-}
 
+}
+function adBackgroundColor(e){
+    document.documentElement.scrollTop = 210;
+    let topicForClassCheck = document.querySelectorAll('.activeTopic');
+    for(let i=0;i<topicForClassCheck.length;i++)
+    {
+        topicForClassCheck[i].classList.remove('activeTopic');
+    }
+    e.target.classList.add('activeTopic');
+}
 function expandTopic(e){
+    
     resultsDiv.innerHTML = '';
     let selectedTopic = e.target.textContent;
 
     let topicArray = talkDB[selectedTopic];
-    console.log(topicArray);
-
+    // console.log(topicArray);
 
     for(let i = 0; i < topicArray.length; i++){
-        let li = document.createElement('li');
+        let card = document.createElement('a');
+        card.setAttribute('class', 'card');
+        
         let divLeft = document.createElement('div');
         divLeft.setAttribute('class', 'div-left');
         let divRight = document.createElement('div');
@@ -874,6 +905,8 @@ function expandTopic(e){
         let a = document.createElement('a');
         a.setAttribute('href', topicArray[i].link);
         a.setAttribute('target', '_blank');
+        card.setAttribute('href', topicArray[i].link);
+        card.setAttribute('target', '_blank');
         a.innerHTML = topicArray[i].name;
         speaker.innerHTML = topicArray[i].speaker;
         length.innerHTML = topicArray[i].length+' min';
@@ -883,16 +916,12 @@ function expandTopic(e){
         divRight.appendChild(speaker);
         divRight.appendChild(length);
 
-        li.appendChild(divLeft);
-        li.appendChild(divRight);
-
-        resultsDiv.appendChild(li);
+        card.appendChild(divLeft);
+        card.appendChild(divRight);
+        resultsDiv.appendChild(card);
     }
 }
 
 
 
-
 // OnScroll Animation Code
-
-

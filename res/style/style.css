@@ -2,20 +2,39 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
-
+html{
+    scroll-behavior: smooth;
+}
 /* Serious design */
 .container-center{
     max-width: 500px;
     margin: auto;
 }
 .div-categories{
+    background: white;
     padding: 2rem 0;
     margin-bottom: 1rem;
     /* border: 2px solid black; */
+    z-index: 1;
 }
 .div-results{
     padding: 2rem 0;
     /* border: 2px solid black; */
+}
+.div-results .card{
+    background: red;
+    color: white;
+    border: 2px solid white;
+
+}
+.div-results .card:hover{
+    background: white;
+    color: red;
+    border: 2px solid red;
+
+}
+.div-results .card:hover a{
+    color: red;
 }
 .topic{
     transition: .6s all;
@@ -26,11 +45,9 @@
     cursor: pointer;
     font-size: .9rem;
 }
-li{
-
-    list-style-type: none;
+.card{
     margin-bottom: .7rem;
-
+    text-decoration: none;
     border-radius: 10px;
     background: red;
     color: white;
@@ -43,38 +60,42 @@ li{
     padding-bottom: .2rem;
     font-size: .9rem;
 }
-li:hover{
-    background: red;
-    color: white;
+.card:hover{
+    background: white;
+    color: red;
 }
-li .div-left{
+.card .div-left{
     width: 40%;
     /* border: 2px solid red; */
     padding: 0 0.8rem;
 }
-li .div-right{
+.card .div-right{
     position: relative;
     left: -1rem;
     width: 50%;
     /* border: 2px solid green; */
     padding: 0 1rem;
 }
-li .div-left img{
+.div-results .card:hover .card .div-left img{
+    box-shadow: 1px 11px 29px 0px rgba(0,0,0,0.77);
+
+}
+.card .div-left img{
     margin-left: -0.2rem;
     border-radius: 10px;
     width: 100%;
     margin-right: .5rem;
 }
 
-li p{
+.card p{
     font-style: italic;
     margin: .6rem 0;
 }
-li .length{
+.card .length{
     position: relative;
     top: -10px;
 }
-li a{
+.card a{
     transition: .6s all;
     text-decoration: none;
 
@@ -91,13 +112,25 @@ li:hover a{
 
 
 @media screen and (max-width: 450px) {
-    li .div-left img{
+    .card .div-left img{
         height: 100px;
         object-fit: cover;
         object-position: center;
     
     }
-    li{
+    .card{
         font-size: .7rem;
     }
+}
+
+
+.activeTopic{
+    background: red;
+    color: white;
+}
+
+.sticky{
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
