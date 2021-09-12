@@ -2,6 +2,118 @@
 
 
 
+
+// // for links
+// let links = [];
+// for(i = 0; i <= 36; i++){
+// let link = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__message > h4.f-w\\:700.h9.m5 > a`);
+// links.push(link);
+// }
+
+// for(i = 1; i < links.length; i++){
+//     console.log(links[i][0]["href"]);
+// }
+// // for title
+// for(i = 1; i < links.length; i++){
+//     console.log(links[i][0]["innerText"]);
+// }
+
+
+// // Completely different appraoch 
+// let cards = [];
+// for(i = 0; i<= 35;i++){
+// let card = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div`);
+// cards.push(card);
+// }
+
+// for(i = 1; i <= 35; i++){
+// let title = cards[i]["childNodes"][3]["innerText"];
+// let speaker = title.substring(0, title.indexOf('\n')); //for speaker
+
+
+// // title = title.substring(speaker.length+1);
+// // title = title.substring(0, title.indexOf('\nPosted'));
+// // console.log("Speaker: " + speaker)
+// // console.log("Title: " + title);
+// }
+
+// // for thumbnail
+// let thumbnails = [];
+// for(i = 0; i <= 36; i++){
+// let thumbnail = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__image.media__image--thumb.talk-link__image > a > span > span.thumb__sizer > span > img`)
+// thumbnails.push(thumbnail);
+// }
+// for(i = 1; i < thumbnails.length; i++){
+//     console.log(thumbnails[i][0]["currentSrc"]);
+// }
+
+// // for length
+// let lengths = [];
+// for(i = 0; i <= 36; i++){
+//     let length = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__image.media__image--thumb.talk-link__image > a > span > span.thumb__duration`)
+//     lengths.push(length);
+// }
+// for (i = 1; i < lengths.length; i++){
+//     console.log(lengths[i].innerText);
+// }
+
+
+
+// // for speaker
+// let speakers = [];
+// for(i = 0; i <= 36; i++){
+//     let speaker = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__message > h4.h12.talk-link__speaker`);
+//     speakers.push(speaker);
+// }
+// for(i = 1; i < speakers.length; i++){
+// let speakers = [];
+// console.log(speakers[i]['innerText']);
+// }
+
+
+
+
+let talkDB = {"Technology":[], "Science":[], "Global":[]}
+// complete approche
+// fetch data
+let links = [];
+let thumbnails = [];
+let lengths = [];
+let speakers = [];
+
+for(i = 0; i <= 36; i++){
+    let link = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__message > h4.f-w\\:700.h9.m5 > a`);
+    links.push(link);
+
+    let thumbnail = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__image.media__image--thumb.talk-link__image > a > span > span.thumb__sizer > span > img`)
+    thumbnails.push(thumbnail);
+
+    let length = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__image.media__image--thumb.talk-link__image > a > span > span.thumb__duration`)
+    lengths.push(length);
+
+    let speaker = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__message > h4.h12.talk-link__speaker`);
+    speakers.push(speaker);
+    }
+// display
+for(i = 1; i < 37; i++){
+    let name = links[i][0]["innerText"];
+    let link = links[i][0]["href"];
+    let speaker = speakers[i]['innerText'];
+    let length = lengths[i].innerText;
+    let thumbnail = thumbnails[i][0]["currentSrc"];
+
+    let oneTalk = ` , {name:"${name}", link:"${link}", speaker :"${speaker}", length:"${length}", thumbnail:"${thumbnail}"},`;
+    // console.log(oneTalk);
+    talkDB.Technology.push(oneTalk);
+}
+
+// object literal
+for(i = 0; i< talkDB.Technology.length; i++){
+    let target = talkDB.Technology[i].substring(0, talkDB.Technology[i].length-1);
+    console.log(target);
+}
+
+// final work
 let talkDB = {
     "Technology":[
     {
@@ -476,7 +588,7 @@ let talkDB = {
    , {name:"How to read a dog's body language", link:"https://www.ted.com/talks/barbara_sherman_how_to_read_a_dog_s_body_language", speaker :"Barbara Sherman", length:"17:37", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/9d2eda88-c302-42bc-96f7-af08c50b4191/Barbara+Sherman.jpeg?quality=89&w=320"}
    , {name:"The secret life of dogs", link:"https://www.ted.com/talks/julia_espinosa_the_secret_life_of_dogs", speaker :"Julia Espinosa", length:"17:44", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/3049280b-d615-45af-9080-708cfb0d2e34/Julia+Espinosa.jpeg?quality=89&w=320"}
    , {name:"What makes TB the world's most infectious killer?", link:"https://www.ted.com/talks/melvin_sanicas_what_makes_tb_the_world_s_most_infectious_killer", speaker :"Melvin Sanicas", length:"5:01", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/0429e7e5-6344-40c2-af2b-314e2d0139e0/tuberculosis_textless2.jpg?quality=89&w=320"}
-   , {name:"How to ask for help — and get a \"yes\"", link:"https://www.ted.com/talks/heidi_grant_how_to_ask_for_help_and_get_a_yes", speaker :"Heidi Grant", length:"11:53", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/e7b32163-e24b-4554-a401-2d062d1466bd/HeidiGrant_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"How to ask for help — and get a "yes"", link:"https://www.ted.com/talks/heidi_grant_how_to_ask_for_help_and_get_a_yes", speaker :"Heidi Grant", length:"11:53", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/e7b32163-e24b-4554-a401-2d062d1466bd/HeidiGrant_2019S-embed.jpg?quality=89&w=320"}
    , {name:"Why we need to fight misinformation about vaccines", link:"https://www.ted.com/talks/ethan_lindenberger_why_we_need_to_fight_misinformation_about_vaccines", speaker :"Ethan Lindenberger", length:"7:21", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/580cae0f-1ee5-4c2d-901d-974dfcc98951/EthanLindenberger_2019X-embed.jpg?quality=89&w=320"}
    , {name:"There may be extraterrestrial life in our solar system", link:"https://www.ted.com/talks/augusto_carballido_there_may_be_extraterrestrial_life_in_our_solar_system", speaker :"Augusto Carballido", length:"5:00", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/c9786205-209e-43f4-9703-97d6550ee0bc/oceanworlds_textless1.jpg?quality=89&w=320"}
    , {name:"The living tech we need to support human life on other planets", link:"https://www.ted.com/talks/lynn_rothschild_the_living_tech_we_need_to_support_human_life_on_other_planets", speaker :"Lynn Rothschild", length:"16:20", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d8375e16-3280-4f58-89f5-cb9cc91b321d/LynnRothschild_2018X-embed.jpg?quality=89&w=320"}
@@ -837,91 +949,97 @@ let talkDB = {
 ]
 }
 
-let topicList = Object.keys(talkDB);
-let heading = document.querySelector('div-heading');
-let catagoriesDiv = document.querySelector('.div-categories');
-let resultsDiv = document.querySelector('.div-results');
 
-// setting fixed position to div-categories onScrolling
 
-window.onscroll = function(){
-    // console.log(window.pageXOffset);
-    if(window.pageYOffset >= 220){
-        catagoriesDiv.classList.add('sticky');
-    }else{
-        catagoriesDiv.classList.remove('sticky');
+// for science topic
+// fddfsdfsdfsdfSDFsdfsdf
+// sdf
+// sdf
+// sd
+// fsd
+// f
+// sdf
+// sd
+// fsdf
+
+
+// complete approche
+// fetch data
+let talkDB = {"Technology":[], "Science":[], "Global":[]}
+
+let links = [];
+let thumbnails = [];
+let lengths = [];
+let speakers = [];
+
+for(i = 0; i <= 36; i++){
+    let link = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__message > h4.f-w\\:700.h9.m5 > a`);
+    links.push(link);
+
+    let thumbnail = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__image.media__image--thumb.talk-link__image > a > span > span.thumb__sizer > span > img`)
+    thumbnails.push(thumbnail);
+
+    let length = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__image.media__image--thumb.talk-link__image > a > span > span.thumb__duration`)
+    lengths.push(length);
+
+    let speaker = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__message > h4.h12.talk-link__speaker`);
+    speakers.push(speaker);
     }
+// display
+for(i = 1; i < 37; i++){
+    let name = links[i][0]["innerText"];
+    let link = links[i][0]["href"];
+    let speaker = speakers[i]['innerText'];
+    let length = lengths[i].innerText;
+    let thumbnail = thumbnails[i][0]["currentSrc"];
+
+    let oneTalk = ` , {name:"${name}", link:"${link}", speaker :"${speaker}", length:"${length}", thumbnail:"${thumbnail}"},`;
+    // console.log(oneTalk);
+    talkDB.Science.push(oneTalk);
 }
 
-
-
-
-
-// adding topic list to div-categories
-
-for(let i = 0; i < topicList.length; i++){
-    let topic = document.createElement('span');
-    topic.setAttribute('class', 'topic');
-    topic.textContent = topicList[i];
-    topic.addEventListener('click', expandTopic);
-    topic.onclick = adBackgroundColor;
-    catagoriesDiv.appendChild(topic);
-
+// object literal
+for(i = 0; i< talkDB.Science.length; i++){
+    let target = talkDB.Science[i].substring(0, talkDB.Science[i].length-1);
+    console.log(target);
 }
-function adBackgroundColor(e){
-    document.documentElement.scrollTop = 210;
-    let topicForClassCheck = document.querySelectorAll('.activeTopic');
-    for(let i=0;i<topicForClassCheck.length;i++)
-    {
-        topicForClassCheck[i].classList.remove('activeTopic');
+
+// For Global
+let talkDB = {"Technology":[], "Science":[], "Global":[]}
+
+let links = [];
+let thumbnails = [];
+let lengths = [];
+let speakers = [];
+
+for(i = 0; i <= 36; i++){
+    let link = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__message > h4.f-w\\:700.h9.m5 > a`);
+    links.push(link);
+
+    let thumbnail = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__image.media__image--thumb.talk-link__image > a > span > span.thumb__sizer > span > img`)
+    thumbnails.push(thumbnail);
+
+    let length = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__image.media__image--thumb.talk-link__image > a > span > span.thumb__duration`)
+    lengths.push(length);
+
+    let speaker = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__message > h4.h12.talk-link__speaker`);
+    speakers.push(speaker);
     }
-    e.target.classList.add('activeTopic');
-}
-function expandTopic(e){
-    
-    resultsDiv.innerHTML = '';
-    let selectedTopic = e.target.textContent;
+// display
+for(i = 1; i < 37; i++){
+    let name = links[i][0]["innerText"];
+    let link = links[i][0]["href"];
+    let speaker = speakers[i]['innerText'];
+    let length = lengths[i].innerText;
+    let thumbnail = thumbnails[i][0]["currentSrc"];
 
-    let topicArray = talkDB[selectedTopic];
-    // console.log(topicArray);
-
-    for(let i = 0; i < topicArray.length; i++){
-        let card = document.createElement('a');
-        card.setAttribute('class', 'card');
-        
-        let divLeft = document.createElement('div');
-        divLeft.setAttribute('class', 'div-left');
-        let divRight = document.createElement('div');
-        divRight.setAttribute('class', 'div-right');
-
-
-        let speaker = document.createElement('p');
-        let length = document.createElement('p');
-        length.setAttribute('class', 'length');
-
-        let thumbnail = document.createElement('img');
-        thumbnail.setAttribute('src', topicArray[i].thumbnail);
-                
-        let a = document.createElement('a');
-        a.setAttribute('href', topicArray[i].link);
-        a.setAttribute('target', '_blank');
-        card.setAttribute('href', topicArray[i].link);
-        card.setAttribute('target', '_blank');
-        a.innerHTML = topicArray[i].name;
-        speaker.innerHTML = topicArray[i].speaker;
-        length.innerHTML = topicArray[i].length+' min';
-
-        divLeft.appendChild(thumbnail);
-        divRight.appendChild(a);
-        divRight.appendChild(speaker);
-        divRight.appendChild(length);
-
-        card.appendChild(divLeft);
-        card.appendChild(divRight);
-        resultsDiv.appendChild(card);
-    }
+    let oneTalk = ` , {name:"${name}", link:"${link}", speaker :"${speaker}", length:"${length}", thumbnail:"${thumbnail}"},`;
+    // console.log(oneTalk);
+    talkDB.Global.push(oneTalk);
 }
 
-
-
-// OnScroll Animation Code
+// object literal
+for(i = 0; i< talkDB.Global.length; i++){
+    let target = talkDB.Global[i].substring(0, talkDB.Global[i].length-1);
+    console.log(target);
+}
