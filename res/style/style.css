@@ -7,22 +7,22 @@
 
 /* width */
 ::-webkit-scrollbar {
-    width: .5px;
+    width: 10px;
   }
   
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #00000000;
+    background: #fd0000;
   }
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: rgba(75, 219, 8, 0);
+    background: rgb(255, 255, 255);
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 0, 0, 0);
+    background: rgb(255, 255, 255);
   }
 
 
@@ -59,6 +59,7 @@ html{
 }
 .div-results{
     padding: 2rem 0;
+    /* height: 260px; */
     /* border: 2px solid black; */
 }
 /* .div-results .card{
@@ -167,6 +168,7 @@ li:hover a{
     .card{
         font-size: .7rem;
     }
+
 }
 
 
@@ -179,4 +181,20 @@ li:hover a{
     position: fixed;
     top: 0;
     width: 100%;
+}
+
+footer{
+    border-top-left-radius: 20px;
+    text-align: center;
+    background: red;
+    color: white;
+    padding: 1rem;
+    
+
+}
+footer a{
+    /* text-decoration: none; */
+    color: white;
+    text-decoration-style: dotted;
+
 }

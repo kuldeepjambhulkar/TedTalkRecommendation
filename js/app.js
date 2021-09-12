@@ -878,7 +878,6 @@ function adBackgroundColor(e){
     e.target.classList.add('activeTopic');
 }
 function expandTopic(e){
-    
     resultsDiv.innerHTML = '';
     let selectedTopic = e.target.textContent;
 
