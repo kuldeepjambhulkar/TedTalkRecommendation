@@ -54,20 +54,19 @@ html{
     padding: 2rem 0;
     /* border: 2px solid black; */
 }
-.div-results .card{
+/* .div-results .card{
     background: red;
     color: white;
-    border: 2px solid white;
 
-}
-.div-results .card:hover{
+} */
+/* .div-results .card:hover{
     background: white;
     color: red;
     border: 2px solid red;
 
-}
-.div-results .card:hover a{
-    color: red;
+} */
+.div-results .card a{
+    color: black;
 }
 .topic{
     transition: .6s all;
@@ -79,11 +78,13 @@ html{
     font-size: .9rem;
 }
 .card{
+    border: 2px solid red;
+
     margin-bottom: .7rem;
     text-decoration: none;
     border-radius: 10px;
-    background: red;
-    color: white;
+    background: white;
+    color: black;
     /* border: 2px solid red; */
     transition: .6s all;    
     padding: .5rem 0;
@@ -93,9 +94,14 @@ html{
     padding-bottom: .2rem;
     font-size: .9rem;
 }
+
+
 .card:hover{
-    background: white;
-    color: red;
+    background: red;
+    color: white;
+}
+.card:hover a{
+    color: white;
 }
 .card .div-left{
     width: 40%;
