@@ -3,92 +3,325 @@
 
 
 
-// for links
+// // for links
+// let links = [];
+// for(i = 0; i <= 36; i++){
+// let link = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__message > h4.f-w\\:700.h9.m5 > a`);
+// links.push(link);
+// }
+
+// for(i = 1; i < links.length; i++){
+//     console.log(links[i][0]["href"]);
+// }
+// // for title
+// for(i = 1; i < links.length; i++){
+//     console.log(links[i][0]["innerText"]);
+// }
+
+
+// // Completely different appraoch 
+// let cards = [];
+// for(i = 0; i<= 35;i++){
+// let card = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div`);
+// cards.push(card);
+// }
+
+// for(i = 1; i <= 35; i++){
+// let title = cards[i]["childNodes"][3]["innerText"];
+// let speaker = title.substring(0, title.indexOf('\n')); //for speaker
+
+
+// // title = title.substring(speaker.length+1);
+// // title = title.substring(0, title.indexOf('\nPosted'));
+// // console.log("Speaker: " + speaker)
+// // console.log("Title: " + title);
+// }
+
+// // for thumbnail
+// let thumbnails = [];
+// for(i = 0; i <= 36; i++){
+// let thumbnail = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__image.media__image--thumb.talk-link__image > a > span > span.thumb__sizer > span > img`)
+// thumbnails.push(thumbnail);
+// }
+// for(i = 1; i < thumbnails.length; i++){
+//     console.log(thumbnails[i][0]["currentSrc"]);
+// }
+
+// // for length
+// let lengths = [];
+// for(i = 0; i <= 36; i++){
+//     let length = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__image.media__image--thumb.talk-link__image > a > span > span.thumb__duration`)
+//     lengths.push(length);
+// }
+// for (i = 1; i < lengths.length; i++){
+//     console.log(lengths[i].innerText);
+// }
+
+
+
+// // for speaker
+// let speakers = [];
+// for(i = 0; i <= 36; i++){
+//     let speaker = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__message > h4.h12.talk-link__speaker`);
+//     speakers.push(speaker);
+// }
+// for(i = 1; i < speakers.length; i++){
+// let speakers = [];
+// console.log(speakers[i]['innerText']);
+// }
+
+
+
+
+let talkDB = {"Technology":[]}
+// complete approche
+// fetch data
 let links = [];
-for(i = 0; i <= 36; i++){
-let link = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__message > h4.f-w\\:700.h9.m5 > a`);
-links.push(link);
-}
-
-for(i = 1; i < links.length; i++){
-    console.log(links[i][0]["href"]);
-}
-// for title
-for(i = 1; i < links.length; i++){
-    console.log(links[i][0]["innerText"]);
-}
-
-
-// Completely different appraoch 
-let cards = [];
-for(i = 0; i<= 35;i++){
-let card = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div`);
-cards.push(card);
-}
-
-for(i = 1; i <= 35; i++){
-let title = cards[i]["childNodes"][3]["innerText"];
-let speaker = title.substring(0, title.indexOf('\n')); //for speaker
-
-
-// title = title.substring(speaker.length+1);
-// title = title.substring(0, title.indexOf('\nPosted'));
-// console.log("Speaker: " + speaker)
-// console.log("Title: " + title);
-}
-
-// for thumbnail
 let thumbnails = [];
-for(i = 0; i <= 36; i++){
-let thumbnail = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__image.media__image--thumb.talk-link__image > a > span > span.thumb__sizer > span > img`)
-thumbnails.push(thumbnail);
-}
-for(i = 1; i < thumbnails.length; i++){
-    console.log(thumbnails[i][0]["currentSrc"]);
-}
-
-// for length
 let lengths = [];
+let speakers = [];
+
 for(i = 0; i <= 36; i++){
+    let link = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__message > h4.f-w\\:700.h9.m5 > a`);
+    links.push(link);
+
+    let thumbnail = document.querySelectorAll(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__image.media__image--thumb.talk-link__image > a > span > span.thumb__sizer > span > img`)
+    thumbnails.push(thumbnail);
+
     let length = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__image.media__image--thumb.talk-link__image > a > span > span.thumb__duration`)
     lengths.push(length);
+
+    let speaker = document.querySelector(`#browse-results > div.row.row-sm-4up.row-lg-6up.row-skinny > div:nth-child(${i}) > div > div > div > div.media__message > h4.h12.talk-link__speaker`);
+    speakers.push(speaker);
+    }
+// display
+for(i = 1; i < 37; i++){
+    let name = links[i][0]["innerText"];
+    let link = links[i][0]["href"];
+    let speaker = speakers[i]['innerText'];
+    let length = lengths[i].innerText;
+    let thumbnail = thumbnails[i][0]["currentSrc"];
+
+    let oneTalk = ` , {name:"${name}", link:"${link}", speaker :"${speaker}", length:"${length}", thumbnail:"${thumbnail}"},`;
+    // console.log(oneTalk);
+    talkDB.Technology.push(oneTalk);
 }
-for (i = 1; i < lengths.length; i++){
-    console.log(lengths[i].innerText);
+
+// object literal
+for(i = 0; i< talkDB.Technology.length; i++){
+    let target = talkDB.Technology[i].substring(0, talkDB.Technology[i].length-1);
+    console.log(target);
 }
 
+// final work
+let talkDB = {
+    "Technology":[
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// complete approche
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    {
+        name:"A new way to restore Earth's biodiversity — from the air", 
+        link:"https://www.ted.com/talks/susan_graham_a_new_way_to_restore_earth_s_biodiversity_from_the_air", speaker :"Susan Graham", 
+        length:"2:22", 
+        thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/3494d7ab-8377-4dff-9489-95828fa7cc0d/SusanGraham_2021-embed.jpg?quality=89&w=320"
+    }
+   , {name:"A future with fewer cars", link:"https://www.ted.com/talks/freeman_h_shen_a_future_with_fewer_cars", speaker :"Freeman H. Shen", length:"6:57", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/343b8c48-a5d6-4d3a-b827-123bc50f3eac/FreemanHShen_2021-embed.jpg?quality=89&w=320"}
+   , {name:"How we can detect pretty much anything", link:"https://www.ted.com/talks/helene_morlon_and_anna_papadopoulou_how_we_can_detect_pretty_much_anything", speaker :"Hélène Morlon and Anna Papadopoulou", length:"5:40", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/7e24de04-20e9-456d-a84e-11d132e88ad7/environmentalDNAtextless.jpg?quality=89&w=320"}
+   , {name:"An interactive map to track (and end) pollution in China", link:"https://www.ted.com/talks/ma_jun_an_interactive_map_to_track_and_end_pollution_in_china", speaker :"Ma Jun", length:"11:51", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d4e9f990-d675-4357-9a62-3578d4f95dd5/MaJun_2021-embed.jpg?quality=89&w=320"}
+   , {name:"Iceland's superpowered underground volcanoes", link:"https://www.ted.com/talks/jean_baptiste_p_koehl_iceland_s_superpowered_underground_volcanoes", speaker :"Jean-Baptiste P. Koehl", length:"5:02", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/09e9dcbc-6c59-4abe-97c1-9bfa557fbcf1/geothermaltextless.jpg?quality=89&w=320"}
+   , {name:"How your body could become its own diagnostic lab", link:"https://www.ted.com/talks/aaron_morris_how_your_body_could_become_its_own_diagnostic_lab", speaker :"Aaron Morris", length:"5:19", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/a18fbf7c-0ea1-4769-9fd7-d200183c7c16/AaronMorris_2021F-embed.jpg?quality=89&w=320"}
+   , {name:"How dirt bikes and STEM ignite ingenuity in Baltimore", link:"https://www.ted.com/talks/brittany_young_how_dirt_bikes_and_stem_ignite_ingenuity_in_baltimore", speaker :"Brittany Young", length:"5:56", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ac48e77a-2cc5-4fd5-aee0-f8fb5c856efe/BrittanyYoung_2021F-embed.jpg?quality=89&w=320"}
+   , {name:"What farmers need to be modern, climate-friendly and profitable", link:"https://www.ted.com/talks/beth_ford_what_farmers_need_to_be_modern_climate_friendly_and_profitable", speaker :"Beth Ford", length:"13:46", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/4bc4978d-f052-46b7-8cb3-6bbb1e7b4c3b/BethFord_2021S-embed.jpg?quality=89&w=320"}
+   , {name:"The death of the universe — and what it means for life", link:"https://www.ted.com/talks/katie_mack_the_death_of_the_universe_and_what_it_means_for_life", speaker :"Katie Mack", length:"6:24", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/2fd67762-b308-4131-9414-034c855303a1/KatieMack_2021F-embed.jpg?quality=89&w=320"}
+   , {name:"How NASA invented a ventilator for COVID-19 ... in 37 days", link:"https://www.ted.com/talks/dan_goods_how_nasa_invented_a_ventilator_for_covid_19_in_37_days", speaker :"Dan Goods", length:"7:04", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/611638fe-5764-4e05-a137-02b912e8338d/DanGoods_2020X-embed.jpg?quality=89&w=320"}
+   , {name:"Better cybersecurity starts with honesty and accountability", link:"https://www.ted.com/talks/nadya_bartol_better_cybersecurity_starts_with_honesty_and_accountability", speaker :"Nadya Bartol", length:"9:51", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/416bc029-1d1a-4be9-adf1-21180227765e/NadyaBartol_2021S-embed.jpg?quality=89&w=320"}
+   , {name:"The future of flying is electrifying", link:"https://www.ted.com/talks/cory_combs_the_future_of_flying_is_electrifying", speaker :"Cory Combs", length:"4:19", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/a9da09c3-a3f5-4707-872c-9eb919ec6034/CoryCombs_2021F-embed.jpg?quality=89&w=320"}
+   , {name:"The race to build AI that benefits humanity with Sam Altman", link:"https://www.ted.com/talks/the_ted_interview_the_race_to_build_ai_that_benefits_humanity_with_sam_altman", speaker :"The TED Interview", length:"1h 9m", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/c96fc6b2-4c1d-425c-8cf2-e3ff130d3d58/TAC_Interview_SamAltman_2021V-embed.jpg?quality=89&w=320"}
+   , {name:"How do wind turbines work?", link:"https://www.ted.com/talks/rebecca_j_barthelmie_and_sara_c_pryor_how_do_wind_turbines_work", speaker :"Rebecca J. Barthelmie and Sara C. Pryor", length:"4:44", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/132f8870-81ce-4bd8-90bc-bfc5266319e7/windturbinetextless.jpg?quality=89&w=320"}
+   , {name:"The giant leaps in language technology — and who's left behind", link:"https://www.ted.com/talks/kalika_bali_the_giant_leaps_in_language_technology_and_who_s_left_behind", speaker :"Kalika Bali", length:"16:21", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/f546d184-50e3-4226-bea6-ae8c09647d0b/KalikaBali_2020X-embed.jpg?quality=89&w=320"}
+   , {name:"How we can curb climate change by spending two percent more on everything", link:"https://www.ted.com/talks/jens_burchardt_how_we_can_curb_climate_change_by_spending_two_percent_more_on_everything", speaker :"Jens Burchardt", length:"11:33", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/1d8a1c10-3a0f-4052-8ad3-6555ce9d5576/JensBurchardt_2021S-embed.jpg?quality=89&w=320"}
+   , {name:"Why good ideas get trapped in the valley of death — and how to rescue them", link:"https://www.ted.com/talks/ted_ed_why_good_ideas_get_trapped_in_the_valley_of_death_and_how_to_rescue_them", speaker :"TED-Ed", length:"4:49", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/195e9151-1271-452c-beba-0b2936eb5828/planforzerotextless.jpg?quality=89&w=320"}
+   , {name:"How does ultrasound work?", link:"https://www.ted.com/talks/jacques_s_abramowicz_how_does_ultrasound_work", speaker :"Jacques S. Abramowicz", length:"4:55", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ddc69405-c63f-40d9-80f9-447deb004074/ultrasoundtextless.jpg?quality=89&w=320"}
+   , {name:"The electrical blueprints that orchestrate life", link:"https://www.ted.com/talks/michael_levin_the_electrical_blueprints_that_orchestrate_life", speaker :"Michael Levin", length:"19:36", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/49a47da2-dd4a-4103-b7c9-5e2e302c079b/MichaelLevin_2020-embed.jpg?quality=89&w=320"}
+   , {name:"Possible futures from the intersection of nature, tech and society", link:"https://www.ted.com/talks/natsai_audrey_chieza_possible_futures_from_the_intersection_of_nature_tech_and_society", speaker :"Natsai Audrey Chieza", length:"8:42", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/3c29f4c7-e3c1-4500-975a-6b628b741aa3/NatsaiAudreyChieza_2021S-embed.jpg?quality=89&w=320"}
+   , {name:"What's the best fuel for your car?", link:"https://www.ted.com/talks/ted_ed_what_s_the_best_fuel_for_your_car", speaker :"TED-Ed", length:"4:20", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/7831745b-02de-42ae-8ce3-f1c3ab371ab7/greenpremium_textless3.jpg?quality=89&w=320"}
+   , {name:"The innovations we need to avoid a climate disaster", link:"https://www.ted.com/talks/bill_gates_the_innovations_we_need_to_avoid_a_climate_disaster", speaker :"Bill Gates", length:"48:21", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/771f923e-01ae-414e-9743-770186936c43/BillGates_2021T-embed.jpg?quality=89&w=320"}
+   , {name:"How much land does it take to power the world?", link:"https://www.ted.com/talks/ted_ed_how_much_land_does_it_take_to_power_the_world", speaker :"TED-Ed", length:"4:26", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/413e2d82-eb3a-4ef1-b64d-7e8cad774e94/howmuchspacetextless.jpg?quality=89&w=320"}
+   , {name:"How does artificial intelligence learn?", link:"https://www.ted.com/talks/briana_brownell_how_does_artificial_intelligence_learn", speaker :"Briana Brownell", length:"4:37", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/18d28106-8e70-4248-a95d-8aa9fcc43ef7/perceptrontextless.jpg?quality=89&w=320"}
+   , {name:"What is deep tech? A look at how it could shape the future", link:"https://www.ted.com/talks/antoine_gourevitch_what_is_deep_tech_a_look_at_how_it_could_shape_the_future", speaker :"Antoine Gourévitch", length:"10:59", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/74d24678-21f6-4d77-8bd4-126c5b467b11/AntoineGourevitch_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"How much electricity does it take to power the world?", link:"https://www.ted.com/talks/ted_ed_how_much_electricity_does_it_take_to_power_the_world", speaker :"TED-Ed", length:"4:41", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/c17e519a-8dee-4b0a-a25e-a07206bdc23f/HowMuchPowerTextless.jpg?quality=89&w=320"}
+   , {name:"How video game skills can get you ahead in life", link:"https://www.ted.com/talks/william_collis_how_video_game_skills_can_get_you_ahead_in_life", speaker :"William Collis", length:"10:21", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/55b3f054-48f4-4e04-a8d3-c4edce9567c4/WilliamCollis_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"The world's biggest battery looks nothing like a battery", link:"https://www.ted.com/talks/ted_ed_the_world_s_biggest_battery_looks_nothing_like_a_battery", speaker :"TED-Ed", length:"4:55", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/961565d6-b331-4020-b04d-426931ff6d57/batteriestextless.jpg?quality=89&w=320"}
+   , {name:"Meditations on the intersection of humanity and technology", link:"https://www.ted.com/talks/olivia_arthur_meditations_on_the_intersection_of_humanity_and_technology", speaker :"Olivia Arthur", length:"9:21", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/5e5ce124-54ad-4e80-83ed-9db58717afb4/OliviaArthur_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"Technology can't fix inequality — but training and opportunities could", link:"https://www.ted.com/talks/gbenga_sesan_technology_can_t_fix_inequality_but_training_and_opportunities_could", speaker :"'Gbenga Sesan", length:"10:42", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ce435915-78a4-41ed-9bb7-a4caf2678fb1/_GbengaSesan_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"The promise of quantum computers", link:"https://www.ted.com/talks/matt_langione_the_promise_of_quantum_computers", speaker :"Matt Langione", length:"12:09", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/7747d337-3754-48ef-b39a-40c5b979a591/MattLangione_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"How technology changes our sense of right and wrong", link:"https://www.ted.com/talks/juan_enriquez_how_technology_changes_our_sense_of_right_and_wrong", speaker :"Juan Enriquez", length:"7:24", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/1d776150-58eb-413a-bad2-a102bc8aa40c/JuanEnriquez_2020-embed.jpg?quality=89&w=320"}
+   , {name:"What if every satellite suddenly disappeared?", link:"https://www.ted.com/talks/moriba_jah_what_if_every_satellite_suddenly_disappeared", speaker :"Moriba Jah", length:"4:57", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/9c30cb48-ce06-4209-9fe4-650d1e2ab6af/satellite_textless.jpg?quality=89&w=320"}
+   , {name:"How a geospatial nervous system could help us design a better future", link:"https://www.ted.com/talks/jack_dangermond_how_a_geospatial_nervous_system_could_help_us_design_a_better_future", speaker :"Jack Dangermond", length:"22:12", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/737fa62d-3f1f-4eae-861a-06521d62324b/JackDangermond_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"Who decides how long a second is?", link:"https://www.ted.com/talks/john_kitching_who_decides_how_long_a_second_is", speaker :"John Kitching", length:"5:26", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/260d1e25-c455-483d-aca7-91356bc520c0/AtomicTimeTextless.jpg?quality=89&w=320"}
+   , {name:"3 ways to upgrade democracy for the 21st century", link:"https://www.ted.com/talks/max_rashbrooke_3_ways_to_upgrade_democracy_for_the_21st_century", speaker :"Max Rashbrooke", length:"14:08", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d407c406-c53c-4e21-9c97-584f727c1219/MaxRashbrooke_2019X-embed.jpg?quality=89&w=320"}
+   , {name:"How bad data keeps us from good AI", link:"https://www.ted.com/talks/mainak_mazumdar_how_bad_data_keeps_us_from_good_ai", speaker :"Mainak Mazumdar", length:"10:08", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ecabbe0e-a448-4d52-8e80-c7483537a3eb/MainakMazumdar_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"How AI can help shatter barriers to equality", link:"https://www.ted.com/talks/jamila_gordon_how_ai_can_help_shatter_barriers_to_equality", speaker :"Jamila Gordon", length:"5:55", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/b4fbd0e6-63c0-4fe2-89c4-d6b4e9ebec22/JamilaGordon_2020W-embed.jpg?quality=89&w=320"}
+   , {name:"6 big ethical questions about the future of AI", link:"https://www.ted.com/talks/genevieve_bell_6_big_ethical_questions_about_the_future_of_ai", speaker :"Genevieve Bell", length:"14:48", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/577d7a83-796f-477f-95c6-25c068f4accc/GenevieveBell_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"Financial inclusion, the digital divide and other thoughts on the future of money", link:"https://www.ted.com/talks/ajay_banga_financial_inclusion_the_digital_divide_and_other_thoughts_on_the_future_of_money", speaker :"Ajay Banga", length:"20:00", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/e331659b-c66e-4dcd-9206-1b9d1dca17cf/AjayBanga_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"Building the world's largest (and most controversial) power plant", link:"https://www.ted.com/talks/alex_gendler_building_the_world_s_largest_and_most_controversial_power_plant", speaker :"Alex Gendler", length:"5:18", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ce00f3ba-8b68-4665-a405-3aec56107b4f/threegorges_textless.jpg?quality=89&w=320"}
+   , {name:"A stellar history of modern astronomy", link:"https://www.ted.com/talks/emily_levesque_a_stellar_history_of_modern_astronomy", speaker :"Emily Levesque", length:"15:20", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/56674469-55a9-47ed-928b-66e366540fc0/EmilyLevesque_2020X-embed.jpg?quality=89&w=320"}
+   , {name:"Inside the massive (and unregulated) world of surveillance tech", link:"https://www.ted.com/talks/sharon_weinberger_inside_the_massive_and_unregulated_world_of_surveillance_tech", speaker :"Sharon Weinberger", length:"11:23", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/94cbc2d5-4189-4c49-911f-21d0581357c2/SharonWeinberger_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"Could we treat spinal cord injuries with asparagus?", link:"https://www.ted.com/talks/andrew_pelling_could_we_treat_spinal_cord_injuries_with_asparagus", speaker :"Andrew Pelling", length:"7:27", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d2a942ba-4af5-4b52-a8a8-37afc38304c1/AndrewPelling_2020-embed.jpg?quality=89&w=320"}
+   , {name:"Theranos, whistleblowing and speaking truth to power", link:"https://www.ted.com/talks/erika_cheung_theranos_whistleblowing_and_speaking_truth_to_power", speaker :"Erika Cheung", length:"16:50", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/cefd611e-6f4d-4711-b802-7d98cde5c0e2/ErikaCheung_2020X_embed.jpg?quality=89&w=320"}
+   , {name:"How to decarbonize the grid and electrify everything", link:"https://www.ted.com/talks/john_doerr_and_hal_harvey_how_to_decarbonize_the_grid_and_electrify_everything", speaker :"John Doerr and Hal Harvey", length:"20:30", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/19766cc8-2929-426f-901c-e00b499bb80a/JohnDoerr_HalHarvey_2020T-embed.jpg?quality=89&w=320"}
+   , {name:"Climate change is becoming a problem you can taste", link:"https://www.ted.com/talks/amanda_little_climate_change_is_becoming_a_problem_you_can_taste", speaker :"Amanda Little", length:"12:16", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ae81b325-51d6-49c3-adfd-1c245b2aa0d3/AmandaLittle_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"Apple's promise to be carbon neutral by 2030", link:"https://www.ted.com/talks/lisa_jackson_and_liz_ogbu_apple_s_promise_to_be_carbon_neutral_by_2030", speaker :"Lisa Jackson and Liz Ogbu", length:"5:54", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/b30a70c0-2844-4138-af0e-050a2a440275/LisaJackson_2020T-embed.jpg?quality=89&w=320"}
+   , {name:"Could we harness the power of a black hole?", link:"https://www.ted.com/talks/fabio_pacucci_could_we_harness_the_power_of_a_black_hole", speaker :"Fabio Pacucci", length:"5:19", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/41da3caa-9659-4661-8092-e6f70f5ef41b/blackholetextless1.jpg?quality=89&w=320"}
+   , {name:"The global movement to restore nature's biodiversity", link:"https://www.ted.com/talks/thomas_crowther_the_global_movement_to_restore_nature_s_biodiversity", speaker :"Thomas Crowther", length:"11:24", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/e2b2ee1d-597d-472a-9f5b-05da1e2cc03e/ThomasCrowther_2020T-embed.jpg?quality=89&w=320"}
+   , {name:"Countdown Session 5: Action (Full session)", link:"https://www.ted.com/talks/hosted_by_chris_hemsworth_and_priyanka_chopra_jonas_countdown_session_5_action_full_session", speaker :"Hosted by Chris Hemsworth and Priyanka Chopra Jonas", length:"1h 4m", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/5de5c0ec-a54b-4754-b8ab-5aabb6dd09c1/Countdown_2020_Session_05-embed.jpg?quality=89&w=320"}
+   , {name:"Countdown Session 4: Transformation (Full session)", link:"https://www.ted.com/talks/hosted_by_prajakta_koli_and_hannah_stocking_countdown_session_4_transformation_full_session", speaker :"Hosted by Prajakta Koli and Hannah Stocking", length:"1h 7m", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/f7f42cbf-5254-4399-aa80-e86d35741589/Countdown_2020_Session_04-embed.jpg?quality=89&w=320"}
+   , {name:"Countdown Session 3: Transformation (Full session)", link:"https://www.ted.com/talks/hosted_by_jane_fonda_and_xiye_bastida_countdown_session_3_transformation_full_session", speaker :"Hosted by Jane Fonda and Xiye Bastida", length:"1h 7m", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/86d3bac9-ac5f-49ef-bd0b-97057490c1dc/Countdown_2020_Session_03-embed.jpg?quality=89&w=320"}
+   , {name:"Countdown Session 2: Leadership (Full session)", link:"https://www.ted.com/talks/hosted_by_al_gore_and_jaden_smith_countdown_session_2_leadership_full_session", speaker :"Hosted by Al Gore and Jaden Smith", length:"1h 9m", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/4e9180fd-88a9-4d4d-997c-1df00285e8bd/Countdown_2020_Session_02-embed.jpg?quality=89&w=320"}
+   , {name:"Countdown Session 1: Urgency (Full session)", link:"https://www.ted.com/talks/hosted_by_mark_ruffalo_and_don_cheadle_countdown_session_1_urgency_full_session", speaker :"Hosted by Mark Ruffalo and Don Cheadle", length:"1h 8m", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/09d6470b-651c-4a71-b079-37c130cef543/Countdown_2020_Session_01-embed.jpg?quality=89&w=320"}
+   , {name:"How cities are detoxing transportation", link:"https://www.ted.com/talks/monica_araya_how_cities_are_detoxing_transportation", speaker :"Monica Araya", length:"10:12", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/c8434ffe-d033-4d05-8ffe-7c92d32b6ef0/MonicaAraya_2020T-embed.jpg?quality=89&w=320"}
+   , {name:"This decade calls for Earthshots to repair our planet", link:"https://www.ted.com/talks/prince_william_this_decade_calls_for_earthshots_to_repair_our_planet", speaker :"Prince William", length:"7:13", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ad1bf5ba-6158-4966-8207-c4e1bca9f365/PrinceWilliam_2020T-embed.jpg?quality=89&w=320"}
+   , {name:"Can we create the perfect farm?", link:"https://www.ted.com/talks/brent_loken_can_we_create_the_perfect_farm", speaker :"Brent Loken", length:"6:46", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/9ab3ed60-de8e-4924-9301-af28bbacabef/futurefoodtextless2.jpg?quality=89&w=320"}
+   , {name:"Kids are speaking up for the environment. Let's listen", link:"https://www.ted.com/talks/olafur_eliasson_kids_are_speaking_up_for_the_environment_let_s_listen", speaker :"Olafur Eliasson", length:"2:47", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/f69e7c79-2ca1-4152-afea-4bd1f8146823/OlafurEliasssonLarsBorges_2020T-embed.jpg?quality=89&w=320"}
+   , {name:"Civilization on the Moon — and what it means for life on Earth", link:"https://www.ted.com/talks/jessy_kate_schingler_civilization_on_the_moon_and_what_it_means_for_life_on_earth", speaker :"Jessy Kate Schingler", length:"11:43", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/809e3a01-b056-4fca-bae6-f406b70a2c3f/JessyKateSchingler_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"Performing brain surgery without a scalpel", link:"https://www.ted.com/talks/hyunsoo_joshua_no_performing_brain_surgery_without_a_scalpel", speaker :"Hyunsoo Joshua No", length:"4:57", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/617db061-373a-4bcf-88d1-c40e2ce59018/radiosurgerytextless2.jpg?quality=89&w=320"}
+   , {name:"How humanity can reach the stars", link:"https://www.ted.com/talks/philip_lubin_how_humanity_can_reach_the_stars", speaker :"Philip Lubin", length:"8:31", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/1b3c3b9c-5f0c-4d5e-b405-c93ace6082b3/PhilipLubin_2020-embed.jpg?quality=89&w=320"}
+   , {name:"The World Machine | Think Like A Coder, Ep 10", link:"https://www.ted.com/talks/alex_rosenthal_the_world_machine_think_like_a_coder_ep_10", speaker :"Alex Rosenthal", length:"11:45", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/55437772-9c08-4d5f-bbec-5cc49bf84473/TLAC_Episode10_Textless1.jpg?quality=89&w=320"}
+   , {name:"Is human evolution speeding up or slowing down?", link:"https://www.ted.com/talks/laurence_hurst_is_human_evolution_speeding_up_or_slowing_down", speaker :"Laurence Hurst", length:"5:25", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/98ad9de4-efb9-4445-9de0-d2b5bf6e74cb/humansevolvingtextless1.jpg?quality=89&w=320"}
+   , {name:"Art in the age of machine intelligence", link:"https://www.ted.com/talks/refik_anadol_art_in_the_age_of_machine_intelligence", speaker :"Refik Anadol", length:"12:01", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/e73fb78d-542d-48f0-8490-ebbd6c0f3be9/RefikAnadol_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"Let's scan the whole planet with LiDAR", link:"https://www.ted.com/talks/chris_fisher_let_s_scan_the_whole_planet_with_lidar", speaker :"Chris Fisher", length:"13:15", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/869747fd-c6c9-4efc-b391-0efd6e02e0a4/ChrisFisher_2019X-embed.jpg?quality=89&w=320"}
+   , {name:"A stock market for social justice", link:"https://www.ted.com/talks/zigzag_a_stock_market_for_social_justice", speaker :"ZigZag", length:"38:59", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/0421a2e8-ade7-4ab2-bb30-ce87415f78f4/ZIGZAG_Talkpage.16X9_07.14.20.jpg?quality=89&w=320"}
+   , {name:"Deep learning, neural networks and the future of AI", link:"https://www.ted.com/talks/yann_lecun_deep_learning_neural_networks_and_the_future_of_ai", speaker :"Yann LeCun", length:"55:11", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/43cf1b5b-a587-4d82-b8c3-b2a8766436a4/YannLeCun_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"How to connect while apart", link:"https://www.ted.com/talks/eric_yuan_how_to_connect_while_apart", speaker :"Eric Yuan", length:"25:29", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/e1b90117-ccb8-4292-abaa-1f6b894a6af8/EricYuan_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"What happens when biology becomes technology?", link:"https://www.ted.com/talks/christina_agapakis_what_happens_when_biology_becomes_technology", speaker :"Christina Agapakis", length:"10:58", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/61dd7615-7167-445a-9332-a608c5fc7d6b/ChristinaAgapakis_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"A friendly, autonomous robot that delivers your food", link:"https://www.ted.com/talks/ali_kashani_a_friendly_autonomous_robot_that_delivers_your_food", speaker :"Ali Kashani", length:"8:51", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d1332c65-a8ee-469d-8ca5-88a56a85f29b/AliKashani_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"The future of digital communication and privacy", link:"https://www.ted.com/talks/will_cathcart_the_future_of_digital_communication_and_privacy", speaker :"Will Cathcart", length:"18:53", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/b94b29e4-0716-43eb-827b-287f8554c6a8/WillCathcart_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"How COVID-19 impacted a global tech company and spurred innovation", link:"https://www.ted.com/talks/craig_silliman_how_covid_19_impacted_a_global_tech_company_and_spurred_innovation", speaker :"Craig Silliman", length:"13:53", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/b861f49b-dbdc-45c9-bbe5-e31d5661ac0b/CraigSilliman_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"The trials, tribulations and timeline of a COVID-19 vaccine", link:"https://www.ted.com/talks/jerome_kim_the_trials_tribulations_and_timeline_of_a_covid_19_vaccine", speaker :"Jerome Kim", length:"23:32", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/9de8ee79-4eaf-4c6c-bbcb-f3496fc61422/JeromeKim_2020S_embed.jpg?quality=89&w=320"}
+   , {name:"The Factory | Think Like A Coder, Ep 9", link:"https://www.ted.com/talks/alex_rosenthal_the_factory_think_like_a_coder_ep_9", speaker :"Alex Rosenthal", length:"9:45", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/6de0fa96-a97b-4aef-8860-552698aff4fe/TLAC_Episode9_textless.jpg?quality=89&w=320"}
+   , {name:"How digital innovation can fight pandemics and strengthen democracy", link:"https://www.ted.com/talks/audrey_tang_how_digital_innovation_can_fight_pandemics_and_strengthen_democracy", speaker :"Audrey Tang", length:"49:05", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/29df4caa-705d-41f1-9954-2a92bfc6771e/AudreyTang_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"How tech companies can help combat the pandemic and reshape public health", link:"https://www.ted.com/talks/karen_desalvo_how_tech_companies_can_help_combat_the_pandemic_and_reshape_public_health", speaker :"Karen DeSalvo", length:"24:23", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/8bc3b188-7f74-48a5-b48f-e8cd17093d26/KarenDeSalvo_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"The new jobs of the future, and other insights on the changing workforce", link:"https://www.ted.com/talks/ben_pring_the_new_jobs_of_the_future_and_other_insights_on_the_changing_workforce", speaker :"Ben Pring", length:"19:16", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/a9fe0389-a3a2-43a9-a067-bbe79eb78304/BenPring_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"Autofocusing reading glasses of the future", link:"https://www.ted.com/talks/nitish_padmanaban_autofocusing_reading_glasses_of_the_future", speaker :"Nitish Padmanaban", length:"6:51", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/700724f7-7ca2-4649-a56f-821cfabdb0c2/NitishPadmanaban_2019X-embed.jpg?quality=89&w=320"}
+   , {name:"How do ventilators work?", link:"https://www.ted.com/talks/alex_gendler_how_do_ventilators_work", speaker :"Alex Gendler", length:"5:21", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/8f82ed6f-46e4-48c4-b0fb-aab629548383/ventilators_textless.jpg?quality=89&w=320"}
+   , {name:"A virus detection network to stop the next pandemic", link:"https://www.ted.com/talks/pardis_sabeti_and_christian_happi_a_virus_detection_network_to_stop_the_next_pandemic", speaker :"Pardis Sabeti and Christian Happi", length:"5:54", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ed677b16-d01a-4b3c-ab36-f83de7cc5d2b/ChristianHappiandPardisSabeti_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"What you need to know about face surveillance", link:"https://www.ted.com/talks/kade_crockford_what_you_need_to_know_about_face_surveillance", speaker :"Kade Crockford", length:"12:49", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/b271750e-0d3c-4ef4-92f3-79002dd6a2c8/KadeCrockford_2019X-embed.jpg?quality=89&w=320"}
+   , {name:"Crisis support for the world, one text away", link:"https://www.ted.com/talks/nancy_lublin_crisis_support_for_the_world_one_text_away", speaker :"Nancy Lublin", length:"11:30", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/8d90bd8f-fdcc-482c-938a-0933073718bd/NancyLublin_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"The Gauntlet | Think Like A Coder, Ep 8", link:"https://www.ted.com/talks/alex_rosenthal_the_gauntlet_think_like_a_coder_ep_8", speaker :"Alex Rosenthal", length:"8:01", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/c1847074-e222-4f6a-8828-239962b55a4b/TLAC_Episode8_textless.jpg?quality=89&w=320"}
+   , {name:"How to spark your curiosity, scientifically", link:"https://www.ted.com/talks/nadya_mason_how_to_spark_your_curiosity_scientifically", speaker :"Nadya Mason", length:"11:18", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/232c3739-ee95-4bf6-9d6f-e4052fab061a/NadyaMason_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"Investing in health care workers strengthens communities", link:"https://www.ted.com/talks/raj_panjabi_investing_in_health_care_workers_strengthens_communities", speaker :"Raj Panjabi", length:"11:00", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/5d42a80a-0678-4d54-8c5a-b036ee23ea13/RajPanjabi_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"A global hackathon to take on the coronavirus pandemic", link:"https://www.ted.com/talks/marko_russiver_a_global_hackathon_to_take_on_the_coronavirus_pandemic", speaker :"Marko Russiver", length:"14:33", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/2220cb4b-c982-41b8-aac3-489f0aaddf87/MarkoRussiver_2020V-embed.jpg?quality=89&w=320"}
+   , {name:"An ethical plan for ending the pandemic and restarting the economy", link:"https://www.ted.com/talks/danielle_allen_an_ethical_plan_for_ending_the_pandemic_and_restarting_the_economy", speaker :"Danielle Allen", length:"50:07", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/340402f4-7dc7-4014-a3bf-6231ed96a4e0/DanielleAllen_2020V-embed.jpg?quality=89&w=320"}
+   , {name:"How you can help save the monarch butterfly — and the planet", link:"https://www.ted.com/talks/mary_ellen_hannibal_how_you_can_help_save_the_monarch_butterfly_and_the_planet", speaker :"Mary Ellen Hannibal", length:"11:56", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/9fada603-9cba-45e1-8308-4e480c86fda8/MaryEllenHannibal_2019W-embed.jpg?quality=89&w=320"}
+   , {name:"How the world's longest underwater tunnel was built", link:"https://www.ted.com/talks/alex_gendler_how_the_world_s_longest_underwater_tunnel_was_built", speaker :"Alex Gendler", length:"5:08", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/739a6ce1-ab4b-4a97-bafd-24fa59cc1962/chunneltextless.jpg?quality=89&w=320"}
+   , {name:"The quest for the coronavirus vaccine", link:"https://www.ted.com/talks/seth_berkley_the_quest_for_the_coronavirus_vaccine", speaker :"Seth Berkley", length:"1h 2m", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/52089556-161c-4332-b9e4-2094e361b1bb/SethBerkley_2020V-embed.jpg?quality=89&w=320"}
+   , {name:"Simple, effective tech to connect communities in crisis", link:"https://www.ted.com/talks/johanna_figueira_simple_effective_tech_to_connect_communities_in_crisis", speaker :"Johanna Figueira", length:"9:56", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/1e1f5be8-c506-4618-95c9-6901303231e0/JohannaFigueira_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"Why isn't the Netherlands underwater?", link:"https://www.ted.com/talks/stefan_al_why_isn_t_the_netherlands_underwater", speaker :"Stefan Al", length:"4:56", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/2ea833fe-d1ba-412b-9b77-a8ab1dfda151/deltaworkstextless.jpg?quality=89&w=320"}
+   , {name:"A camera that can see around corners", link:"https://www.ted.com/talks/david_lindell_a_camera_that_can_see_around_corners", speaker :"David Lindell", length:"7:34", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/9732772e-1a74-480a-b77e-99b5fbc30122/DavidLindell_2019X-embed.jpg?quality=89&w=320"}
+   , {name:"A fascinating time capsule of human feelings toward AI", link:"https://www.ted.com/talks/lucy_farey_jones_a_fascinating_time_capsule_of_human_feelings_toward_ai", speaker :"Lucy Farey-Jones", length:"6:26", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/9e76f348-cd66-4b87-adf9-e4e22334e8b8/LucyFarey-Jones_2019U-embed.jpg?quality=89&w=320"}
+   , {name:"What happens when a Silicon Valley technologist works for the government", link:"https://www.ted.com/talks/matt_cutts_what_happens_when_a_silicon_valley_technologist_works_for_the_government", speaker :"Matt Cutts", length:"6:04", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/f8d6e0b6-3e61-4ec1-a9b2-67b353381170/MattCutts_2019U-embed.jpg?quality=89&w=320"}
+   , {name:"NASA's first software engineer: Margaret Hamilton", link:"https://www.ted.com/talks/matt_porter_and_margaret_hamilton_nasa_s_first_software_engineer_margaret_hamilton", speaker :"Matt Porter and Margaret Hamilton", length:"4:49", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/51792280-23d7-4dff-ab0d-2880dffefd56/margarethamilton_textless.jpg?quality=89&w=320"}
+   , {name:"Art that reveals how technology frames reality", link:"https://www.ted.com/talks/jiabao_li_art_that_reveals_how_technology_frames_reality", speaker :"Jiabao Li", length:"8:21", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/568712c2-1eab-4e29-8bbe-fb3e8db0a464/JiabaoLi_2019W-embed.jpg?quality=89&w=320"}
+   , {name:"What you need to know about stalkerware", link:"https://www.ted.com/talks/eva_galperin_what_you_need_to_know_about_stalkerware", speaker :"Eva Galperin", length:"12:56", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/43595f89-1962-4904-8034-ee2d26971f7b/EvaGalperin_2019W-embed.jpg?quality=89&w=320"}
+   , {name:"The Tower of Epiphany | Think Like A Coder, Ep 7", link:"https://www.ted.com/talks/alex_rosenthal_the_tower_of_epiphany_think_like_a_coder_ep_7", speaker :"Alex Rosenthal", length:"7:58", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/768b6243-fc90-43c9-b20a-bf7e8b9b8004/TLAC_Episode7_textless.jpg?quality=89&w=320"}
+   , {name:"How technology has changed what it's like to be deaf", link:"https://www.ted.com/talks/rebecca_knill_how_technology_has_changed_what_it_s_like_to_be_deaf", speaker :"Rebecca Knill", length:"13:58", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/160d8fd7-62af-4326-b5c1-afe2f100d7b0/RebeccaKnill_2020S-embed.jpg?quality=89&w=320"}
+   , {name:"How volumetric video brings a new dimension to filmmaking", link:"https://www.ted.com/talks/diego_prilusky_how_volumetric_video_brings_a_new_dimension_to_filmmaking", speaker :"Diego Prilusky", length:"11:43", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/79a2434c-0b79-473a-a03d-c851158b048d/DiegoPrilusky_2019T-embed.jpg?quality=89&w=320"}
+   , {name:"Why you should get paid for your data", link:"https://www.ted.com/talks/jennifer_zhu_scott_why_you_should_get_paid_for_your_data", speaker :"Jennifer Zhu Scott", length:"14:27", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/97b1fbb5-e5bd-4824-983d-ecd446b91aa4/JenniferZhuScott_2019W-embed.jpg?quality=89&w=320"}
+   , {name:"How the compass unlocked the world", link:"https://www.ted.com/talks/david_biello_how_the_compass_unlocked_the_world", speaker :"David Biello", length:"3:07", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/2eb6946a-e10f-4022-8420-2dfc21857b65/DavidBiello_2020V-embed.jpg?quality=89&w=320"}
+   , {name:"How online marketplaces can help local economies, not hurt them", link:"https://www.ted.com/talks/amane_dannouni_how_online_marketplaces_can_help_local_economies_not_hurt_them", speaker :"Amane Dannouni", length:"12:27", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d063b272-b091-412a-aa9b-a6bc050dd074/AmaneDannouni_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"The art and science of special effects", link:"https://www.ted.com/talks/paul_franklin_the_art_and_science_of_special_effects", speaker :"Paul Franklin", length:"15:42", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/eb598ace-ba73-4aa4-a304-57f05a97b54d/Paul+Franklin.jpeg?quality=89&w=320"}
+   , {name:"How bees can keep the peace between elephants and humans", link:"https://www.ted.com/talks/lucy_king_how_bees_can_keep_the_peace_between_elephants_and_humans", speaker :"Lucy King", length:"13:23", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/10792876-8d00-422f-abc5-2951cbf806a1/LucyKing_2019W-embed.jpg?quality=89&w=320"}
+   , {name:"The science of friction — and its surprising impact on our lives", link:"https://www.ted.com/talks/jennifer_vail_the_science_of_friction_and_its_surprising_impact_on_our_lives", speaker :"Jennifer Vail", length:"11:47", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/551d986a-1a06-40fa-a413-159a72d52490/JenniferVail_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"Tiny robots with giant potential", link:"https://www.ted.com/talks/paul_mceuen_and_marc_miskin_tiny_robots_with_giant_potential", speaker :"Paul McEuen and Marc Miskin", length:"13:10", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/a7ae0802-0aa3-4b56-a426-4a005cfd156a/PaulMcEuenandMarcMiskin_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"How humans and AI can work together to create better businesses", link:"https://www.ted.com/talks/sylvain_duranton_how_humans_and_ai_can_work_together_to_create_better_businesses", speaker :"Sylvain Duranton", length:"14:10", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/cf3f770d-65a6-46ee-9616-fdb7183d96ec/SylvainDuranton_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"A new type of medicine, custom-made with tiny proteins", link:"https://www.ted.com/talks/christopher_bahl_a_new_type_of_medicine_custom_made_with_tiny_proteins", speaker :"Christopher Bahl", length:"4:41", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/8f6a5d32-ae44-4681-bd28-52ca3ac361ff/ChristopherBahl_2019U-embed.jpg?quality=89&w=320"}
+   , {name:"A holographic meeting platform for collaborating from anywhere", link:"https://www.ted.com/talks/jinha_lee_a_holographic_meeting_platform_for_collaborating_from_anywhere", speaker :"Jinha Lee", length:"7:40", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/25c37852-8c4c-422f-aec0-c2e6804aefe9/JinhaLee_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"How we can bring AI personalities to life", link:"https://www.ted.com/talks/mariana_lin_how_we_can_bring_ai_personalities_to_life", speaker :"Mariana Lin", length:"16:11", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/9811823c-b823-416c-877d-177e5a2724fb/MarianaLin_2019T-embed.jpg?quality=89&w=320"}
+   , {name:"Parenting in the digital age", link:"https://www.ted.com/talks/sonia_livingstone_parenting_in_the_digital_age", speaker :"Sonia Livingstone", length:"12:03", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/91ec0509-64c7-4c32-83f5-013bc3114ad7/SoniaLivingstone_2019T-embed.jpg?quality=89&w=320"}
+   , {name:"A personal health coach for those living with chronic diseases", link:"https://www.ted.com/talks/priscilla_pemu_a_personal_health_coach_for_those_living_with_chronic_diseases", speaker :"Priscilla Pemu", length:"7:49", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/8b9853a3-fc9f-4681-a9ab-29002104fe4b/PriscillaPemu_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"What was so special about Viking ships?", link:"https://www.ted.com/talks/jan_bill_what_was_so_special_about_viking_ships", speaker :"Jan Bill", length:"4:30", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/2471a7c4-45ec-4080-a52c-71bacd81f4a9/vikingship_textless.jpg?quality=89&w=320"}
+   , {name:"How supply chain transparency can help the planet", link:"https://www.ted.com/talks/markus_mutz_how_supply_chain_transparency_can_help_the_planet", speaker :"Markus Mutz", length:"13:29", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/60491611-1ae4-4bb9-9c59-e92d72f35573/MarkusMutz_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"A swarm of mini drones makes ... magic!", link:"https://www.ted.com/talks/marco_tempest_a_swarm_of_mini_drones_makes_magic", speaker :"Marco Tempest", length:"3:20", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/cf49af8c-8883-46e1-b4d0-0d19998a3b12/MarcoTempest_2019T-embed.jpg?quality=89&w=320"}
+   , {name:"What a digital government looks like", link:"https://www.ted.com/talks/anna_piperal_what_a_digital_government_looks_like", speaker :"Anna Piperal", length:"13:53", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/c1efa229-96c4-4496-852a-6059b94b96ae/AnnaPiperal_2019T-embed.jpg?quality=89&w=320"}
+   , {name:"Could a breathalyzer detect cancer?", link:"https://www.ted.com/talks/julian_burschka_could_a_breathalyzer_detect_cancer", speaker :"Julian Burschka", length:"4:17", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/dc23a136-3cbb-4a7c-bb27-4402488fb30f/1080_c.jpg?quality=89&w=320"}
+   , {name:"The search for dark matter — and what we've found so far", link:"https://www.ted.com/talks/risa_wechsler_the_search_for_dark_matter_and_what_we_ve_found_so_far", speaker :"Risa Wechsler", length:"15:43", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/cd1dcffa-306b-4411-aead-35dadc9ce25a/RisaWechsler_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"How civilization could destroy itself — and 4 ways we could prevent it", link:"https://www.ted.com/talks/nick_bostrom_how_civilization_could_destroy_itself_and_4_ways_we_could_prevent_it", speaker :"Nick Bostrom", length:"21:09", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/32691e06-d571-4f2e-987b-d516ec248272/NickBostrom_2019-embed.jpg?quality=89&w=320"}
+   , {name:"¿Como será el cine del futuro?", link:"https://www.ted.com/talks/diego_prilusky_como_sera_el_cine_del_futuro", speaker :"Diego Prilusky", length:"12:23", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/dc4f068d-d2e0-468b-8168-047331f34d95/Diego+Prilusky.jpeg?quality=89&w=320"}
+   , {name:"What we're getting wrong in the fight to end hunger", link:"https://www.ted.com/talks/jasmine_crowe_what_we_re_getting_wrong_in_the_fight_to_end_hunger", speaker :"Jasmine Crowe", length:"12:11", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/e2ec8940-761c-4cad-97b8-c686d908082e/JasmineCrowe_2019W-embed.jpg?quality=89&w=320"}
+   , {name:"Hacking bacteria to fight cancer", link:"https://www.ted.com/talks/tal_danino_hacking_bacteria_to_fight_cancer", speaker :"Tal Danino", length:"4:51", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/2e12595d-e366-4913-8a73-7446b7f3c18c/programbacteria_textless.jpg?quality=89&w=320"}
+   , {name:"The paradox of efficiency", link:"https://www.ted.com/talks/edward_tenner_the_paradox_of_efficiency", speaker :"Edward Tenner", length:"13:53", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/00f48f32-815d-41bb-95c4-fca41ffe06c1/EdwardTenner_2019-embed.jpg?quality=89&w=320"}
+   , {name:"The unforeseen consequences of a fast-paced world", link:"https://www.ted.com/talks/kathryn_bouskill_the_unforeseen_consequences_of_a_fast_paced_world", speaker :"Kathryn Bouskill", length:"9:26", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/8174232a-386b-44e9-a3da-d0f4e46572c8/KathrynBouskill_2018X-embed.jpg?quality=89&w=320"}
+   , {name:"How does chemotherapy work?", link:"https://www.ted.com/talks/hyunsoo_joshua_no_how_does_chemotherapy_work", speaker :"Hyunsoo Joshua No", length:"5:05", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/e6de1c33-b512-4878-bc63-ed7371d367f0/chemo_textless.jpg?quality=89&w=320"}
+   , {name:"A video game that helps us understand loneliness", link:"https://www.ted.com/talks/cornelia_geppert_a_video_game_that_helps_us_understand_loneliness", speaker :"Cornelia Geppert", length:"12:42", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/56a72079-e27c-4bd2-afb8-10d9da1ea123/CorneliaGeppert_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"The incredible chemistry powering your smartphone", link:"https://www.ted.com/talks/cathy_mulzer_the_incredible_chemistry_powering_your_smartphone", speaker :"Cathy Mulzer", length:"13:36", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/445f9f1a-ee74-4aa4-85c2-48772be89c70/CathyMulzer_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"Why I draw with robots", link:"https://www.ted.com/talks/sougwen_chung_why_i_draw_with_robots", speaker :"Sougwen Chung", length:"8:30", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/64b09e3b-a038-4b9c-9b1a-f4b666fad726/SougwenChung_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"How does laser eye surgery work?", link:"https://www.ted.com/talks/dan_reinstein_how_does_laser_eye_surgery_work", speaker :"Dan Reinstein", length:"5:16", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/4fa84a38-7fd6-4113-a58b-782619dffacc/ocularsurger0.jpg?quality=89&w=320"}
+   , {name:"5 steps for clean air in India", link:"https://www.ted.com/talks/arunabha_ghosh_5_steps_for_clean_air_in_india", speaker :"Arunabha Ghosh", length:"9:05", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/616c04f1-d6ce-45e0-b392-b793a443cccf/ArunabhaGhosh_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"The Furnace Bots | Think Like A Coder, Ep 3", link:"https://www.ted.com/talks/alex_rosenthal_the_furnace_bots_think_like_a_coder_ep_3", speaker :"Alex Rosenthal", length:"5:55", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/778dd3d0-f48e-4346-b4fc-8b273a67e6bb/TLAC_Episode3_Final_Textless.jpg?quality=89&w=320"}
+   , {name:"What it's like to live on the International Space Station", link:"https://www.ted.com/talks/cady_coleman_what_it_s_like_to_live_on_the_international_space_station", speaker :"Cady Coleman", length:"6:16", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/8df9a880-1bbc-4966-89ae-d672778b85d0/CadyColeman_2019U-embed.jpg?quality=89&w=320"}
+   , {name:"In the war for information, will quantum computers defeat cryptographers?", link:"https://www.ted.com/talks/craig_costello_in_the_war_for_information_will_quantum_computers_defeat_cryptographers", speaker :"Craig Costello", length:"16:31", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ef54861c-b837-40c3-a9ca-b97fb53eba01/CraigCostello_2019X-embed.jpg?quality=89&w=320"}
+   , {name:"Small rockets are the next space revolution", link:"https://www.ted.com/talks/peter_beck_small_rockets_are_the_next_space_revolution", speaker :"Peter Beck", length:"11:32", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/261ec7c5-71d0-43d1-bca7-4ad03b368161/PeterBeck_2019-embed.jpg?quality=89&w=320"}
+   , {name:"The dangers of mixing drugs", link:"https://www.ted.com/talks/celine_valery_the_dangers_of_mixing_drugs", speaker :"Céline Valéry", length:"4:45", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ad815cd0-fa4a-4c31-a958-e6571305ba6a/mixingdrugs_textless.jpg?quality=89&w=320"}
+   , {name:"How I sued Cambridge Analytica over my personal data", link:"https://www.ted.com/talks/david_carroll_how_i_sued_cambridge_analytica_over_my_personal_data", speaker :"David Carroll", length:"12:26", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/cabf74a6-543a-4306-8541-031e6a560397/David+Carroll.jpeg?quality=89&w=320"}
+   , {name:"The next software revolution: programming biological cells", link:"https://www.ted.com/talks/sara_jane_dunn_the_next_software_revolution_programming_biological_cells", speaker :"Sara-Jane Dunn", length:"14:47", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/161b2e3b-ba76-42bd-88c0-196a977dbc33/Sara-JaneDunn_2019T-embed.jpg?quality=89&w=320"}
+   , {name:"The price of a  clean internet", link:"https://www.ted.com/talks/hans_block_and_moritz_riesewieck_the_price_of_a_clean_internet", speaker :"Hans Block and Moritz Riesewieck", length:"15:37", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/96a19826-bc10-4b00-b315-9d3ea7cd8edb/HansBlockandMoritzRiesewieck_2018X-embed.jpg?quality=89&w=320"}
+   , {name:"The medical potential of AI and metabolites", link:"https://www.ted.com/talks/leila_pirhaji_the_medical_potential_of_ai_and_metabolites", speaker :"Leila Pirhaji", length:"5:14", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/7caabbfb-d9cf-41bf-a6f9-1f80b182dc42/LeilaPirhaji_2019U-embed.jpg?quality=89&w=320"}
+   , {name:"How close are we to uploading our minds?", link:"https://www.ted.com/talks/michael_s_a_graziano_how_close_are_we_to_uploading_our_minds", speaker :"Michael S.A. Graziano", length:"4:46", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/1b1d30ee-8d13-429c-951d-99ba0f0dda25/minduploading_textless.jpg?quality=89&w=320"}
+   , {name:"Why we should archive everything on the planet", link:"https://www.ted.com/talks/chris_fisher_why_we_should_archive_everything_on_the_planet", speaker :"Chris Fisher", length:"13:18", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/66f2e2ed-3493-45e7-a1c6-a98bc25c5ee2/Chris+Fisher.jpeg?quality=89&w=320"}
+   , {name:"How you can help transform the internet into a place of trust", link:"https://www.ted.com/talks/claire_wardle_how_you_can_help_transform_the_internet_into_a_place_of_trust", speaker :"Claire Wardle", length:"12:11", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d6446567-86cf-4c12-a4ea-2939eaf639ba/ClaireWardle_2019-embed.jpg?quality=89&w=320"}
+   , {name:"The danger of AI is weirder than you think", link:"https://www.ted.com/talks/janelle_shane_the_danger_of_ai_is_weirder_than_you_think", speaker :"Janelle Shane", length:"10:28", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ba61c0b8-9fd0-4db0-b546-575a6e35cd6f/JanelleShane_2019-embed.jpg?quality=89&w=320"}
+   , {name:"An architect's guide to living on Mars", link:"https://www.ted.com/talks/bjarke_ingels_an_architect_s_guide_to_living_on_mars", speaker :"Bjarke Ingels", length:"8:06", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/929fe09a-737f-4cb2-9096-7e4bb935a34c/BjarkeIngels_2019U-embed.jpg?quality=89&w=320"}
+   , {name:"A circular economy for salt that keeps rivers clean", link:"https://www.ted.com/talks/tina_arrowood_a_circular_economy_for_salt_that_keeps_rivers_clean", speaker :"Tina Arrowood", length:"13:19", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d46f97a8-26be-4556-b498-7d84b37ff5bc/TinaArrowood_2019S-embed.jpg?quality=89&w=320"}
+   , {name:"How we're using DNA tech to help farmers fight crop diseases", link:"https://www.ted.com/talks/laura_boykin_how_we_re_using_dna_tech_to_help_farmers_fight_crop_diseases", speaker :"Laura Boykin", length:"12:27", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/3980605c-93fe-490c-9ece-9652336054bc/LauraBoykin_2019T-embed.jpg?quality=89&w=320"}
+   , {name:"Are we living in a simulation?", link:"https://www.ted.com/talks/zohreh_davoudi_are_we_living_in_a_simulation", speaker :"Zohreh Davoudi", length:"4:09", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/cc488ad9-5f2e-45f6-bd45-cc20ae0eaeaa/universesimulation_textless.jpg?quality=89&w=320"}
+   , {name:"The transformative power of video games", link:"https://www.ted.com/talks/herman_narula_the_transformative_power_of_video_games", speaker :"Herman Narula", length:"12:00", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/11339f08-38a8-4550-94fb-59cac6e71202/HermanNarula_2019-embed.jpg?quality=89&w=320"}
+   , {name:"Porque le enseño a niños como yo a programar", link:"https://www.ted.com/talks/antonio_garcia_vicente_porque_le_enseno_a_ninos_como_yo_a_programar", speaker :"Antonio Garcia Vicente", length:"14:45", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/45201388-28f1-4c99-85c4-c99777dcff37/Antonio+Garcia+Vicente.jpeg?quality=89&w=320"}
+   , {name:"A bold plan to empower 1.6 million out-of-school girls in India", link:"https://www.ted.com/talks/safeena_husain_a_bold_plan_to_empower_1_6_million_out_of_school_girls_in_india", speaker :"Safeena Husain", length:"9:59", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/fb96128d-921a-4af8-9db8-2af99114768a/SafeenaHusain_2019-embed.jpg?quality=89&w=320"}
+   , {name:"Make love, not porn", link:"https://www.ted.com/talks/cindy_gallop_make_love_not_porn", speaker :"Cindy Gallop", length:"4:09", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/0d547c4e-5ff3-4d28-b667-a4ec519e795e/CindyGallop_2009-embed.jpg?quality=89&w=320"}
+   , {name:"What streaming means for the future of entertainment", link:"https://www.ted.com/talks/emmett_shear_what_streaming_means_for_the_future_of_entertainment", speaker :"Emmett Shear", length:"14:55", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/fd804786-d7f8-4fda-8e62-4749df6b29fb/EmmettShear_2019-embed.jpg?quality=89&w=320"}
+   , {name:"How deepfakes undermine truth and threaten democracy", link:"https://www.ted.com/talks/danielle_citron_how_deepfakes_undermine_truth_and_threaten_democracy", speaker :"Danielle Citron", length:"13:16", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/24b560be-8578-4ba7-b1d6-6b77c884fc4d/DanielleCitron_2019T-embed.jpg?quality=89&w=320"}
+   , {name:"Inside the bizarre world of internet trolls and propagandists", link:"https://www.ted.com/talks/andrew_marantz_inside_the_bizarre_world_of_internet_trolls_and_propagandists", speaker :"Andrew Marantz", length:"14:36", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/db5bcc6b-ea54-4c76-a43a-1d0a5b5e5adc/AndrewMarantz_2019-embed.jpg?quality=89&w=320"}
+   , {name:"A 13-year-old's plan for removing plastic from the oceans", link:"https://www.ted.com/talks/haaziq_kazi_a_13_year_old_s_plan_for_removing_plastic_from_the_oceans", speaker :"Haaziq Kazi", length:"7:01", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/e02f4f78-8bdf-4580-8a41-6c7a0e845fb3/Haaziq+Kazi.jpeg?quality=89&w=320"}
+   , {name:"Emergency medicine for our climate fever", link:"https://www.ted.com/talks/kelly_wanser_emergency_medicine_for_our_climate_fever", speaker :"Kelly Wanser", length:"14:49", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/b7c5aaa0-c4b0-42c5-9872-b0bd4fdaea4b/KellyWanser_2019T-embed.jpg?quality=89&w=320"}
+   , {name:"Why we need a more accessible digital landscape", link:"https://www.ted.com/talks/judy_brewer_why_we_need_a_more_accessible_digital_landscape", speaker :"Judy Brewer", length:"18:52", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/bdd93a0d-c01d-4e8d-ba3b-8c039f154c22/Judy+Brewer+.jpeg?quality=89&w=320"}
+   , {name:"The high-stakes race to make quantum computers work", link:"https://www.ted.com/talks/chiara_decaroli_the_high_stakes_race_to_make_quantum_computers_work", speaker :"Chiara Decaroli", length:"5:03", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/676660ef-aa3d-4b42-94b3-b6b4d5c8c3d6/quantumcomputers_textless.jpg?quality=89&w=320"}
+   , {name:"The human skills we need in an unpredictable world", link:"https://www.ted.com/talks/margaret_heffernan_the_human_skills_we_need_in_an_unpredictable_world", speaker :"Margaret Heffernan", length:"15:52", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/66cdfffe-57f6-424c-8e5d-9916bd366058/MargaretHeffernan_2019T-embed.jpg?quality=89&w=320"}
+   , {name:"What's at the bottom of the ocean — and how we're getting there", link:"https://www.ted.com/talks/victor_vescovo_what_s_at_the_bottom_of_the_ocean_and_how_we_re_getting_there", speaker :"Victor Vescovo", length:"7:51", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/744b85dc-2b67-4721-a847-3fabce4e9e3e/VictorVescovo_2019-embed.jpg?quality=89&w=320"}
+   , {name:"How sharks could inspire a new generation of medical devices", link:"https://www.ted.com/talks/ethan_mann_how_sharks_could_inspire_a_new_generation_of_medical_devices", speaker :"Ethan Mann", length:"9:28", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/f8be7876-72b3-4544-8a76-f675709065fa/Ethan+Mann.jpeg?quality=89&w=320"}
+   , {name:"A new way to get every child ready for kindergarten", link:"https://www.ted.com/talks/claudia_miner_a_new_way_to_get_every_child_ready_for_kindergarten", speaker :"Claudia Miner", length:"9:36", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/a9856bc4-3000-46fc-b97c-9ca9edad0007/ClaudiaMiner_2019-embed.jpg?quality=89&w=320"}
+   , {name:"Can you solve the dark matter fuel riddle?", link:"https://www.ted.com/talks/daniel_finkel_can_you_solve_the_dark_matter_fuel_riddle", speaker :"Daniel Finkel", length:"4:14", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/77583294-3326-4350-a0e8-90df5c816299/dark_matter_fuel_textless.jpg?quality=89&w=320"}
+   , {name:"Origami robots that reshape and transform themselves", link:"https://www.ted.com/talks/jamie_paik_origami_robots_that_reshape_and_transform_themselves", speaker :"Jamie Paik", length:"12:26", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ac5ce80b-3b65-4f48-a21d-9df839ed4364/JamiePaik_2019-embed.jpg?quality=89&w=320"}
+   , {name:"The world's first crowdsourced space traffic monitoring system", link:"https://www.ted.com/talks/moriba_jah_the_world_s_first_crowdsourced_space_traffic_monitoring_system", speaker :"Moriba Jah", length:"5:29", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/9ba085f3-7fb0-4500-9c63-b0c354facd56/MoribaJah_2019U-embed.jpg?quality=89&w=320"}
+   , {name:"How augmented reality is changing activism", link:"https://www.ted.com/talks/glenn_cantave_how_augmented_reality_is_changing_activism", speaker :"Glenn Cantave", length:"6:57", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/b1dbbb6a-a07d-4220-aa06-29c9ed874b85/GlennCantave_2018S-embed.jpg?quality=89&w=320"}
+   , {name:"How I helped make Lego accessible to the blind", link:"https://www.ted.com/talks/matthew_shifrin_how_i_helped_make_lego_accessible_to_the_blind", speaker :"Matthew Shifrin", length:"11:17", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/2675f047-8023-4ed0-b5b3-c5d90ae5cfca/Matthew+Shifrin.jpeg?quality=89&w=320"}
+   , {name:"What makes TB the world's most infectious killer?", link:"https://www.ted.com/talks/melvin_sanicas_what_makes_tb_the_world_s_most_infectious_killer", speaker :"Melvin Sanicas", length:"5:01", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/0429e7e5-6344-40c2-af2b-314e2d0139e0/tuberculosis_textless2.jpg?quality=89&w=320"}
+   , {name:"How technology can democratize music", link:"https://www.ted.com/talks/drew_silverstein_how_technology_can_democratize_music", speaker :"Drew Silverstein", length:"13:28", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/f547d688-8d2c-48cb-b2a9-c9427d601c2c/Drew+Silverstein.jpeg?quality=89&w=320"}
+   , {name:"The living tech we need to support human life on other planets", link:"https://www.ted.com/talks/lynn_rothschild_the_living_tech_we_need_to_support_human_life_on_other_planets", speaker :"Lynn Rothschild", length:"16:20", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/d8375e16-3280-4f58-89f5-cb9cc91b321d/LynnRothschild_2018X-embed.jpg?quality=89&w=320"}
+   , {name:"How synthetic biology could wipe out humanity — and how we can stop it", link:"https://www.ted.com/talks/rob_reid_how_synthetic_biology_could_wipe_out_humanity_and_how_we_can_stop_it", speaker :"Rob Reid", length:"16:36", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/a364648f-cd81-4d80-8910-61bd9803ea16/RobReid_2019-embed.jpg?quality=89&w=320"}
+   , {name:"Underwater farms vs. climate change", link:"https://www.ted.com/talks/ayana_elizabeth_johnson_and_megan_davis_underwater_farms_vs_climate_change", speaker :"Ayana Elizabeth Johnson and Megan Davis", length:"4:15", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/59141604-9c97-40f1-a993-e5524401deff/aquacultureTextless.jpg?quality=89&w=320"}
+   , {name:"Your body vs. implants", link:"https://www.ted.com/talks/kaitlyn_sadtler_your_body_vs_implants", speaker :"Kaitlyn Sadtler", length:"4:27", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/1e902ba1-6c2e-4a62-907f-b7a7d7905158/medicalimplants_textless.jpg?quality=89&w=320"}
+   , {name:"5 challenges we could solve by designing new proteins", link:"https://www.ted.com/talks/david_baker_5_challenges_we_could_solve_by_designing_new_proteins", speaker :"David Baker", length:"10:19", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/f3af7d05-dbb8-4a8b-b37b-229a47ed14ff/DavidBaker_2019-embed.jpg?quality=89&w=320"}
+   , {name:"Tactile photographs that display worlds of light, shadow and mood", link:"https://www.ted.com/talks/truls_nord_tactile_photographs_that_display_worlds_of_light_shadow_and_mood", speaker :"Truls Nord", length:"13:08", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/501d74ee-5913-4132-b03b-fce41a136f1e/Truls+Nord.jpeg?quality=89&w=320"}
+   , {name:"The most detailed map of galaxies, black holes and stars ever made", link:"https://www.ted.com/talks/juna_kollmeier_the_most_detailed_map_of_galaxies_black_holes_and_stars_ever_made", speaker :"Juna Kollmeier", length:"14:13", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/18e75a49-279a-4109-81cd-9ffe5aaca9b2/JunaKollmeier_2019-embed.jpg?quality=89&w=320"}
+   , {name:"How light technology is changing medicine", link:"https://www.ted.com/talks/sajan_saini_how_light_technology_is_changing_medicine", speaker :"Sajan Saini", length:"5:07", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/0921060c-eec1-46cd-bdcb-15b6e567aaea/medicaldevices_textless_2.jpg?quality=89&w=320"}, {name:"A new way to fund health care for the most vulnerable", link:"https://www.ted.com/talks/andrew_bastawrous_a_new_way_to_fund_health_care_for_the_most_vulnerable", speaker :"Andrew Bastawrous", length:"11:15", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/4f864739-70a1-4cf0-b307-32032133a03d/AndrewBastawrous_2018S-embed.jpg?quality=89&w=320"}
+      , {name:"How AI could compose a personalized soundtrack to your life", link:"https://www.ted.com/talks/pierre_barreau_how_ai_could_compose_a_personalized_soundtrack_to_your_life", speaker :"Pierre Barreau", length:"8:29", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/60cb847d-f662-4dc3-8a29-6ae4c1e5d4b2/PierreBarreau_2018-embed.jpg?quality=89&w=320"}
+      , {name:"A love letter to realism in a time of grief", link:"https://www.ted.com/talks/mark_pollock_and_simone_george_a_love_letter_to_realism_in_a_time_of_grief", speaker :"Mark Pollock and Simone George", length:"19:22", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/0e2bf6a4-cdc2-448b-ab59-9a5c0ad0d513/MarkPollockandSimoneGeorge_2018-embed.jpg?quality=89&w=320"}
+      , {name:"Let's launch a satellite to track a threatening greenhouse gas", link:"https://www.ted.com/talks/fred_krupp_let_s_launch_a_satellite_to_track_a_threatening_greenhouse_gas", speaker :"Fred Krupp", length:"8:33", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/153d9e3f-24ee-4f1a-a9f7-92a2a193f1b9/FredKrupp_2018-embed.jpg?quality=89&w=320"}
+      , {name:"Home renters are powerless. Here's how to fix that", link:"https://www.ted.com/talks/yale_fox_home_renters_are_powerless_here_s_how_to_fix_that", speaker :"Yale Fox", length:"12:19", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/0ff2e524-f24f-48fd-a5a9-bf947421f7e8/Yale+Fox.jpeg?quality=89&w=320"}
+      , {name:"How data is helping us unravel the mysteries of the brain", link:"https://www.ted.com/talks/steve_mccarroll_how_data_is_helping_us_unravel_the_mysteries_of_the_brain", speaker :"Steve McCarroll", length:"17:22", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/2fba04eb-4e0f-49e4-b43f-bf84fdd8663a/SteveMcCarroll_2017P-embed.jpg?quality=89&w=320"}
+      , {name:"How China is (and isn't) fighting pollution and climate change", link:"https://www.ted.com/talks/angel_hsu_how_china_is_and_isn_t_fighting_pollution_and_climate_change", speaker :"Angel Hsu", length:"12:18", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/8f919778-dbf6-4372-b1e0-a33d9dd83880/AngelHsu_2018-embed.jpg?quality=89&w=320"}
+      , {name:"How we can use light to see deep inside our bodies and brains", link:"https://www.ted.com/talks/mary_lou_jepsen_how_we_can_use_light_to_see_deep_inside_our_bodies_and_brains", speaker :"Mary Lou Jepsen", length:"16:50", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/460860e7-45da-4662-af53-c7a8ef24fc1a/MaryLouJepsen_2018-embed.jpg?quality=89&w=320"}
+      , {name:"What a scrapyard in Ghana can teach us about innovation", link:"https://www.ted.com/talks/dk_osseo_asare_what_a_scrapyard_in_ghana_can_teach_us_about_innovation", speaker :"DK Osseo-Asare", length:"14:17", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/44c29a5e-6913-43c6-bd15-2618a0bae461/DKOsseoAsare_2017G-embed.jpg?quality=89&w=320"}
+      , {name:"How AI can save our humanity", link:"https://www.ted.com/talks/kai_fu_lee_how_ai_can_save_our_humanity", speaker :"Kai-Fu Lee", length:"14:49", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/32590e66-61d1-47ce-85d5-7d710df61fd1/KaiFuLee_2018-embed.jpg?quality=89&w=320"}
+      , {name:"Data-driven farming could transform agriculture", link:"https://www.ted.com/talks/ranveer_chandra_data_driven_farming_could_transform_agriculture", speaker :"Ranveer Chandra", length:"17:34", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/bc955103-c124-44cb-bc91-a8d91dd5c6df/Ranveer+Chandra.jpeg?quality=89&w=320"}
+      , {name:"Fake videos of real people — and how to spot them", link:"https://www.ted.com/talks/supasorn_suwajanakorn_fake_videos_of_real_people_and_how_to_spot_them", speaker :"Supasorn Suwajanakorn", length:"7:15", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/44bf08f1-1a0e-4def-99f2-84a956cda88d/SupasornSuwajanakorn_2018-embed.jpg?quality=89&w=320"}
+      , {name:"How AI is making it easier to diagnose disease", link:"https://www.ted.com/talks/pratik_shah_how_ai_is_making_it_easier_to_diagnose_disease", speaker :"Pratik Shah", length:"4:59", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/7218d01e-2e82-412f-89a2-062d01ef2b85/PratikShah_2017G-embed.jpg?quality=89&w=320"}
+      , {name:"What the Russian Revolution would have looked like on social media", link:"https://www.ted.com/talks/mikhail_zygar_what_the_russian_revolution_would_have_looked_like_on_social_media", speaker :"Mikhail Zygar", length:"4:49", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/11bb6944-b1fe-435c-8b84-2f83062d5873/MikhailZygar_2018U-embed.jpg?quality=89&w=320"}
+      , {name:"What your smart devices know (and share) about you", link:"https://www.ted.com/talks/kashmir_hill_and_surya_mattu_what_your_smart_devices_know_and_share_about_you", speaker :"Kashmir Hill and Surya Mattu", length:"9:05", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/f609862f-00dd-459e-bcb0-f3258c0059b1/KashmirHillandSuryaMattu_2018-embed.jpg?quality=89&w=320"}
+      , {name:"How memory science can help fight harassment", link:"https://www.ted.com/talks/julia_shaw_how_memory_science_can_help_fight_harassment", speaker :"Julia Shaw", length:"9:41", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ae5c1fa6-94d8-4bd2-8137-6cc240980bf3/julia.jpeg?quality=89&w=320"}
+      , {name:"The mission to create a searchable database of Earth's surface", link:"https://www.ted.com/talks/will_marshall_the_mission_to_create_a_searchable_database_of_earth_s_surface", speaker :"Will Marshall", length:"6:13", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/0f9d320c-cc5c-4576-b673-e6234542456b/WillMarshall_2018U-embed.jpg?quality=89&w=320"}
+      , {name:"How exactly does binary code work?", link:"https://www.ted.com/talks/jose_americano_n_l_f_de_freitas_how_exactly_does_binary_code_work", speaker :"José Américano N L F de Freitas", length:"4:41", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/ba452aa6-9c5a-4d02-9f59-4bb1fe6ab3c7/zbinary_textless.jpg?quality=89&w=320"}
+      , {name:"A new way to monitor vital signs (that can see through walls)", link:"https://www.ted.com/talks/dina_katabi_a_new_way_to_monitor_vital_signs_that_can_see_through_walls", speaker :"Dina Katabi", length:"13:17", thumbnail:"https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/b0fd48fd-f7c9-413f-ab80-d02acbe9e005/DinaKatabi_2018-embed.jpg?quality=89&w=320"}
+   
+]}
 
 
 
