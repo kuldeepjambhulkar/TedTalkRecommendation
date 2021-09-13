@@ -2,7 +2,10 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
+body{
+    transition: .6s all ease;
 
+}
 
 
 /* width */
@@ -55,6 +58,12 @@ html{
     margin-bottom: 1rem;
     /* border: 2px solid black; */
     z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    transition: .6s all ease;
 
 }
 .div-results{
@@ -91,7 +100,7 @@ html{
     margin-bottom: .7rem;
     text-decoration: none;
     border-radius: 10px;
-    background: white;
+    background: transparent;
     color: black;
     /* border: 2px solid red; */
     transition: .6s all;    
@@ -197,4 +206,33 @@ footer a{
     color: white;
     text-decoration-style: dotted;
 
+}
+
+.theme{
+    transition: .6s all ease;
+    /* background: purple; */
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    border: 2px solid red;
+    
+}
+.light{
+    border: 2px solid red;
+
+}
+.dark{
+
+    background: red;
+}
+.allDarkTheme{
+    background: black;
+    color:  white;
+}
+.allDarkTheme.div-categories{
+    background: black;
+}
+
+ .cardAllDarkTheme{
+    color: white;
 }
