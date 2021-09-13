@@ -838,10 +838,10 @@ let talkDB = {
 }
 
 let topicList = Object.keys(talkDB);
+let body = document.body;
 let heading = document.querySelector('div-heading');
 let catagoriesDiv = document.querySelector('.div-categories');
 let resultsDiv = document.querySelector('.div-results');
-
 // setting fixed position to div-categories onScrolling
 
 window.onscroll = function(){
@@ -858,16 +858,33 @@ window.onscroll = function(){
 
 
 // adding topic list to div-categories
-
+let catagoryUnit = document.createElement('div');
+body.appendChild(catagoryUnit);
 for(let i = 0; i < topicList.length; i++){
     let topic = document.createElement('span');
     topic.setAttribute('class', 'topic');
     topic.textContent = topicList[i];
     topic.addEventListener('click', expandTopic);
     topic.onclick = adBackgroundColor;
-    catagoriesDiv.appendChild(topic);
-
+    catagoryUnit.appendChild(topic);
 }
+let theme = document.createElement('div');
+theme.setAttribute('class', 'theme');
+catagoriesDiv.appendChild(catagoryUnit);
+catagoriesDiv.appendChild(theme);
+
+theme.addEventListener('click', function(){
+    theme.classList.toggle('dark');
+    body.classList.toggle('allDarkTheme');
+    catagoriesDiv.classList.toggle('allDarkTheme');
+
+})
+
+
+
+
+
+
 function adBackgroundColor(e){
     document.documentElement.scrollTop = 210;
     let topicForClassCheck = document.querySelectorAll('.activeTopic');
@@ -886,7 +903,7 @@ function expandTopic(e){
 
     for(let i = 0; i < topicArray.length; i++){
         let card = document.createElement('a');
-        card.setAttribute('class', 'card');
+        card.setAttribute('class', 'card ');
         
         let divLeft = document.createElement('div');
         divLeft.setAttribute('class', 'div-left');
@@ -901,9 +918,9 @@ function expandTopic(e){
         let thumbnail = document.createElement('img');
         thumbnail.setAttribute('src', topicArray[i].thumbnail);
                 
-        let a = document.createElement('a');
-        a.setAttribute('href', topicArray[i].link);
-        a.setAttribute('target', '_blank');
+        let a = document.createElement('span');
+        a.style.fontWeight = "bold"
+        a.style.fontSize ='.8rem';
         card.setAttribute('href', topicArray[i].link);
         card.setAttribute('target', '_blank');
         a.innerHTML = topicArray[i].name;
@@ -918,6 +935,11 @@ function expandTopic(e){
         card.appendChild(divLeft);
         card.appendChild(divRight);
         resultsDiv.appendChild(card);
+
+
+        if(body.classList.contains('allDarkTheme')){
+            card.classList.toggle('cardAllDarkTheme')
+        }
     }
 }
 
@@ -927,3 +949,8 @@ function expandTopic(e){
 window.onbeforeunload = function () {
     window.scrollTo(0, 0);
   }
+
+
+//   theme.addEventListener('click', function(){
+//     card.classList.toggle('cardAllDarkTheme');
+// }
